@@ -1,0 +1,41 @@
+import { Toaster } from "@/components/ui/toaster";
+import { Toaster as Sonner } from "@/components/ui/sonner";
+import { TooltipProvider } from "@/components/ui/tooltip";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Index from "./pages/Index";
+import NotFound from "./pages/NotFound";
+import Canteen from "./pages/Canteen";
+import Announcements from "./pages/Announcements";
+import Clubs from "./pages/Clubs";
+import AcademicCalendar from "./pages/AcademicCalendar";
+import ShuttleBus from "./pages/ShuttleBus";
+import AdminLogin from "./pages/AdminLogin";
+// This comment is added to force a re-render/re-bundle by Vite
+
+
+const queryClient = new QueryClient();
+
+const App = () => (
+  <QueryClientProvider client={queryClient}>
+    <TooltipProvider>
+      <Toaster />
+      <Sonner />
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Index />} />
+          <Route path="/canteen" element={<Canteen />} />
+          <Route path="/announcements" element={<Announcements />} />
+          <Route path="/clubs" element={<Clubs />} />
+          <Route path="/calendar" element={<AcademicCalendar />} />
+          <Route path="/shuttle-bus" element={<ShuttleBus />} />
+          <Route path="/admin-login" element={<AdminLogin />} />
+          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </BrowserRouter>
+    </TooltipProvider>
+  </QueryClientProvider>
+);
+
+export default App;

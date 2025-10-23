@@ -1,0 +1,129 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 220 15% 20%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 220 15% 20%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 15% 20%;
+
+    /* Deep Purple */
+    --primary: 300 21% 19%;
+    --primary-foreground: 0 0% 100%;
+    --primary-light: 300 25% 35%;
+    --primary-dark: 300 25% 12%;
+
+    /* Complementary Accent */
+    --secondary: 300 18% 28%;
+    --secondary-foreground: 0 0% 100%;
+    --secondary-light: 300 20% 38%;
+
+    --muted: 300 10% 95%;
+    --muted-foreground: 300 8% 45%;
+
+    --accent: 300 18% 28%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 300 15% 88%;
+    --input: 300 15% 88%;
+    --ring: 300 21% 19%;
+
+    --radius: 0.75rem;
+
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(300 21% 19%), hsl(300 25% 35%));
+    --gradient-secondary: linear-gradient(135deg, hsl(300 18% 28%), hsl(300 20% 38%));
+    --gradient-hero: linear-gradient(135deg, hsl(300 21% 19%) 0%, hsl(300 25% 25%) 50%, hsl(300 21% 19%) 100%);
+    
+    /* Shadows */
+    --shadow-elegant: 0 10px 40px -10px hsl(300 21% 19% / 0.2);
+    --shadow-card: 0 4px 20px -4px hsl(300 20% 40% / 0.15);
+    --shadow-glow: 0 0 40px hsl(300 25% 35% / 0.3);
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 300 15% 20%;
+    --sidebar-primary: 300 21% 19%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 300 10% 95%;
+    --sidebar-accent-foreground: 300 15% 20%;
+    --sidebar-border: 300 15% 88%;
+    --sidebar-ring: 300 21% 19%;
+  }
+
+  .dark {
+    --background: 220 20% 10%;
+    --foreground: 0 0% 95%;
+
+    --card: 220 20% 12%;
+    --card-foreground: 0 0% 95%;
+
+    --popover: 220 20% 12%;
+    --popover-foreground: 0 0% 95%;
+
+    --primary: 300 28% 45%;
+    --primary-foreground: 0 0% 100%;
+    --primary-light: 300 30% 55%;
+    --primary-dark: 300 25% 25%;
+
+    --secondary: 300 22% 35%;
+    --secondary-foreground: 0 0% 100%;
+    --secondary-light: 300 25% 45%;
+
+    --muted: 300 10% 20%;
+    --muted-foreground: 300 8% 65%;
+
+    --accent: 300 22% 35%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 62.8% 50%;
+    --destructive-foreground: 0 0% 95%;
+
+    --border: 300 12% 25%;
+    --input: 300 12% 25%;
+    --ring: 300 28% 45%;
+
+    --gradient-primary: linear-gradient(135deg, hsl(300 28% 45%), hsl(300 30% 55%));
+    --gradient-secondary: linear-gradient(135deg, hsl(300 22% 35%), hsl(300 25% 45%));
+    --gradient-hero: linear-gradient(135deg, hsl(300 25% 25%) 0%, hsl(300 28% 35%) 50%, hsl(300 25% 25%) 100%);
+    
+    --shadow-elegant: 0 10px 40px -10px hsl(300 28% 45% / 0.3);
+    --shadow-card: 0 4px 20px -4px hsl(300 25% 40% / 0.25);
+    --shadow-glow: 0 0 40px hsl(300 30% 55% / 0.4);
+
+    --sidebar-background: 300 15% 12%;
+    --sidebar-foreground: 0 0% 95%;
+    --sidebar-primary: 300 28% 45%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 300 10% 20%;
+    --sidebar-accent-foreground: 0 0% 95%;
+    --sidebar-border: 300 12% 25%;
+    --sidebar-ring: 300 28% 45%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-['Inter'];
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-['Playfair_Display'];
+  }
+}
