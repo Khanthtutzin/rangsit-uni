@@ -1,6 +1,6 @@
 import { ArrowRight, Users, BookOpen, Award } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import heroImage from "@/assets/rangsit-banner.jpg";
+import heroImage from "@/assets/rangsit-her.webp";
 
 const Hero = () => {
   return (
@@ -18,11 +18,6 @@ const Hero = () => {
       {/* Content */}
       <div className="container mx-auto px-4 z-10 relative">
         <div className="max-w-3xl">
-          <div className="inline-block mb-6 px-4 py-2 bg-secondary/90 rounded-full shadow-glow">
-            <span className="text-sm font-semibold text-secondary-foreground">
-              🎓 Top University in Thailand
-            </span>
-          </div>
 
           <h1 className="font-playfair text-5xl md:text-7xl font-bold text-primary-foreground mb-6 leading-tight">
             Welcome to
@@ -52,8 +47,8 @@ const Hero = () => {
           {/* Stats */}
           <div className="grid grid-cols-3 gap-6 max-w-2xl">
             <div className="text-center">
-              <div className="flex items-center justify-center w-12 h-12 bg-secondary/20 rounded-lg mb-2 mx-auto">
-                <Users className="w-6 h-6 text-secondary" />
+              <div className="flex items-center justify-center w-12 h-12 bg-secondary/90 rounded-lg mb-2 mx-auto">
+                <Users className="w-6 h-6 text-white" />
               </div>
               <div className="text-3xl font-bold text-primary-foreground mb-1">
                 25,000+
@@ -61,8 +56,8 @@ const Hero = () => {
               <div className="text-sm text-primary-foreground/70">Students</div>
             </div>
             <div className="text-center">
-              <div className="flex items-center justify-center w-12 h-12 bg-secondary/20 rounded-lg mb-2 mx-auto">
-                <BookOpen className="w-6 h-6 text-secondary" />
+              <div className="flex items-center justify-center w-12 h-12 bg-secondary/90 rounded-lg mb-2 mx-auto">
+                <BookOpen className="w-6 h-6 text-white" />
               </div>
               <div className="text-3xl font-bold text-primary-foreground mb-1">
                 100+
@@ -70,8 +65,8 @@ const Hero = () => {
               <div className="text-sm text-primary-foreground/70">Programs</div>
             </div>
             <div className="text-center">
-              <div className="flex items-center justify-center w-12 h-12 bg-secondary/20 rounded-lg mb-2 mx-auto">
-                <Award className="w-6 h-6 text-secondary" />
+              <div className="flex items-center justify-center w-12 h-12 bg-secondary/90 rounded-lg mb-2 mx-auto">
+                <Award className="w-6 h-6 text-white" />
               </div>
               <div className="text-3xl font-bold text-primary-foreground mb-1">
                 50+
