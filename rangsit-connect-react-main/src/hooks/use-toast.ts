@@ -1,3 +1,7 @@
+/**
+ * This file provides a custom hook (`useToast`) and a `toast` function for managing and displaying toast notifications.
+ * It implements a state management system for toasts, allowing them to be added, updated, dismissed, and removed.
+ */
 import * as React from "react";
 
 import type { ToastActionElement, ToastProps } from "@/components/ui/toast";

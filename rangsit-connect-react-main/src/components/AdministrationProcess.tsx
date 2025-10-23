@@ -45,12 +45,7 @@ const AdministrationProcess = () => {
     <section id="administration" className="py-20 bg-background">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 rounded-full mb-6">
-            <FileText className="w-5 h-5 text-primary" />
-            <span className="text-sm font-semibold text-primary">
-              Student Services
-            </span>
-          </div>
+
           <h2 className="font-playfair text-4xl md:text-5xl font-bold text-foreground mb-4">
             Administration Process
           </h2>

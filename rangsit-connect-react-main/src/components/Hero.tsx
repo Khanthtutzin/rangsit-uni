@@ -1,6 +1,7 @@
 import { ArrowRight, Users, BookOpen, Award } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import heroImage from "@/assets/rangsit-her.webp";
+import { Link } from "react-router-dom";
 
 const Hero = () => {
   return (
@@ -31,10 +32,12 @@ const Hero = () => {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 mb-12">
-            <Button variant="hero" size="lg" className="group">
-              Explore Programs
-              <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />
-            </Button>
+            <Link to="/international-programs">
+              <Button variant="hero" size="lg" className="group">
+                Explore Programs
+                <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />
+              </Button>
+            </Link>
             <Button
               variant="secondary"
               size="lg"
