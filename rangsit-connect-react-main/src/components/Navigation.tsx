@@ -52,9 +52,11 @@ const Navigation = () => {
                 Login
               </Button>
             </Link>
-            <Button size="sm" className="shadow-card hover:shadow-elegant">
-              Apply Now
-            </Button>
+            <Link to="https://rsuip.org/application-form/" target="_blank">
+              <Button size="sm" className="shadow-card hover:shadow-elegant">
+                Apply Now
+              </Button>
+            </Link>
           </div>
 
           {/* Mobile Menu Button */}

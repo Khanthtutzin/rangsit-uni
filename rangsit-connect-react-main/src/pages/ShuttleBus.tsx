@@ -11,7 +11,7 @@ const ShuttleBus = () => {
       from: "Main Campus",
       to: "Downtown Station",
       frequency: "Every 30 minutes",
-      hours: "6:00 AM - 10:00 PM",
+      hours: "7:00 AM - 5:00 PM",
       stops: ["Main Gate", "Building 8", "Library", "Sports Complex", "Downtown"],
     },
     {
@@ -19,7 +19,7 @@ const ShuttleBus = () => {
       from: "Main Campus",
       to: "Student Dormitories",
       frequency: "Every 20 minutes",
-      hours: "6:00 AM - 11:00 PM",
+      hours: "7:00 AM - 5:00 PM",
       stops: ["Main Gate", "Academic Center", "Canteen B9", "Dorm Complex A", "Dorm Complex B"],
     },
   ];
@@ -32,7 +32,7 @@ const ShuttleBus = () => {
           <div className="text-center mb-16">
             <div className="inline-flex items-center gap-2 px-4 py-2 bg-secondary/10 rounded-full mb-6">
               <Bus className="w-5 h-5 text-secondary" />
-              <span className="text-sm font-semibold text-secondary-foreground">
+              <span className="text-sm font-semibold">
                 Campus Transportation
               </span>
             </div>
@@ -80,7 +80,7 @@ const ShuttleBus = () => {
                   </div>
 
                   <div className="flex items-start gap-3">
-                   
+
                     <div className="flex-1">
                       <div className="text-sm text-muted-foreground mb-2">Stops</div>
                       <div className="flex flex-wrap gap-2">

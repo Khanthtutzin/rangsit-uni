@@ -11,7 +11,7 @@ const Canteen = () => {
       code: "B6",
       description: "Modern food court with diverse Thai and international cuisine",
       hours: "7:00 AM - 4:00 PM",
-      location: "Building 8, Ground Floor",
+      location: "Building 6, Ground Floor",
       features: ["Thai Food", "International", "Vegetarian Options", "Air Conditioned"],
     },
     {
@@ -19,7 +19,7 @@ const Canteen = () => {
       code: "B9",
       description: "Traditional Thai restaurant and casual dining area",
       hours: "7:00 AM - 8:00 PM",
-      location: "Building 9, 1st Floor",
+      location: "Building 9, Ground Floor ",
       features: ["Thai Cuisine", "Fast Food", "Beverages", "Outdoor Seating"],
     },
   ];
@@ -32,7 +32,7 @@ const Canteen = () => {
           <div className="text-center mb-16">
             <div className="inline-flex items-center gap-2 px-4 py-2 bg-secondary/10 rounded-full mb-6">
               <UtensilsCrossed className="w-5 h-5 text-secondary" />
-              <span className="text-sm font-semibold text-secondary-foreground">
+              <span className="text-sm font-semibold">
                 Campus Dining
               </span>
             </div>
