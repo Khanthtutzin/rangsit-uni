@@ -66,7 +66,7 @@ const Clubs = () => {
     {
       name: "RIC Table Tennis Club",
       icon: FaTableTennis,
-      members: "50+",
+      members: "60+",
       description: "Lead and represent the student body in university matters",
       category: "Sports",
     },
