@@ -11,7 +11,7 @@ import { Button } from "@/components/ui/button"; // Button component for the log
 import { Input } from "@/components/ui/input";   // Input component for username and password fields
 import { Label } from "@/components/ui/label";   // Label component for input fields
 // Import the Rangsit University logo image
-import rangsitLogo from "@/assets/rangsit-logo.png";
+import rangsitLogo from "@/assets/RSA-logo-new.svg";
 // Import the Navigation and Footer components
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
@@ -39,13 +39,13 @@ const AdminLogin = () => {
       {/* Renders the top navigation bar */}
       <Navigation />
       {/* Main container for the login page, ensuring it takes at least the full screen height */}
-      <div className="min-h-screen flex flex-col items-center justify-center bg-background p-4">
+      <div className="min-h-screen flex flex-col items-center justify-center bg-background p-8">
         {/* Card-like container for the login form, with styling for width, padding, rounded corners, shadow, and border */}
         <div className="w-full max-w-md bg-card p-8 rounded-lg shadow-lg border border-border">
           {/* Section for the logo and login heading */}
           <div className="flex flex-col items-center mb-8">
             {/* Rangsit University logo image */}
-            <img src={rangsitLogo} alt="Rangsit University Logo" className="w-24 h-24 mb-4" />
+            <img src={rangsitLogo} alt="RSA Logo" className="w-24 h-24 mb-4" />
             {/* Main heading for the admin login page */}
             <h2 className="text-3xl font-bold text-foreground">Admin Login</h2>
             {/* Sub-text providing context for the login page */}

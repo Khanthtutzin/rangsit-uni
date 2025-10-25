@@ -87,7 +87,7 @@ const InternationalPrograms = () => {
       {/* Renders the top navigation bar */}
       <Navigation />
       {/* Container for the main content of the page, with responsive padding */}
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-8">
         {/* Main heading for the international programs section */}
         <h1 className="text-5xl font-bold mb-8 pt-24">Undergraduate International Programs</h1>
         {/* Grid layout for displaying program cards, responsive across different screen sizes */}

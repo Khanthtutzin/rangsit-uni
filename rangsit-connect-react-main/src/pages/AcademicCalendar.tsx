@@ -74,7 +74,7 @@ const AcademicCalendar = () => {
       {/* Main section for the academic calendar content */}
       <section id="calendar" className="py-20 bg-muted/30">
         {/* Container for responsive layout */}
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-8">
           {/* Section for the title and description */}
           <div className="text-center mb-16">
             {/* Main heading for the academic calendar */}
@@ -100,7 +100,7 @@ const AcademicCalendar = () => {
               // Card component for a specific month's events
               <Card
                 key={monthData.month} // Unique key for list rendering
-                className="p-6 border-2 hover:border-primary transition-all duration-300 hover:shadow-card bg-card"
+                className="p-6 border-2 hover:border-primary transition-all duration-300 hover:shadow-card bg-card hover:bg-soft-purple"
               >
                 {/* Month title */}
                 <h3 className="text-2xl font-bold text-primary mb-6">

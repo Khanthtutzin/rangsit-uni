@@ -58,7 +58,7 @@ const Announcements = () => {
       {/* Main section for the announcements content */}
       <section id="announcements" className="py-20 bg-muted/30">
         {/* Container for responsive layout */}
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-8">
           {/* Section for the main title and description */}
           <div className="text-center mb-16">
             {/* Main heading for the announcements page */}
@@ -78,7 +78,7 @@ const Announcements = () => {
               // Card component for an individual announcement
               <Card
                 key={index} // Unique key for list rendering
-                className="p-6 border-2 hover:border-primary transition-all duration-300 hover:shadow-card bg-card group cursor-pointer"
+                className="p-6 border-2 hover:border-primary transition-all duration-300 hover:shadow-card bg-card group cursor-pointer hover:bg-soft-purple"
               >
                 {/* Container for category and urgent badges */}
                 <div className="flex items-start justify-between mb-4">

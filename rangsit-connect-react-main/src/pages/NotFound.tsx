@@ -21,7 +21,7 @@ const NotFound = () => {
   // The component's render method
   return (
     // Main container div, styled to take full screen height and center its content both horizontally and vertically
-    <div className="flex min-h-screen items-center justify-center bg-gray-100">
+    <div className="flex min-h-screen items-center justify-center bg-gray-100 px-8">
       {/* Inner div for text content, centered */}
       <div className="text-center">
         {/* Main heading for the 404 error */}

@@ -41,7 +41,7 @@ const Canteen = () => {
       {/* Main section for the canteen services content */}
       <section id="canteen" className="py-20 bg-background">
         {/* Container for responsive layout */}
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-8">
           {/* Section for the main title and description */}
           <div className="text-center mb-16">
             {/* Main heading for the canteen services page */}
@@ -61,7 +61,7 @@ const Canteen = () => {
               // Card component for an individual canteen
               <Card
                 key={canteen.code} // Unique key for list rendering
-                className="p-8 border-2 hover:border-primary transition-all duration-300 hover:shadow-elegant bg-card"
+                className="p-8 border-2 hover:border-primary transition-all duration-300 hover:shadow-elegant bg-card hover:bg-soft-purple"
               >
                 {/* Container for canteen code and name */}
                 <div className="flex items-start justify-between mb-6">

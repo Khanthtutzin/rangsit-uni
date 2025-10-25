@@ -1,5 +1,7 @@
 import { BookOpen, Library, GraduationCap } from "lucide-react";
-import { Card } from "@/components/ui/card";
+import RICImage from "@/assets/building 11.jpg";
+import LibraryImage from "@/assets/building 7 2.jpg";
+import HeroCampusImage from "@/assets/hero-campus.jpg";
 
 const QuickLinks = () => {
   const links = [
@@ -9,6 +11,7 @@ const QuickLinks = () => {
       icon: GraduationCap,
       href: "https://rsuip.org/",
       color: "primary",
+      image: RICImage,
     },
     {
       title: "RSU Library",
@@ -16,6 +19,7 @@ const QuickLinks = () => {
       icon: Library,
       href: "https://library.rsu.ac.th/",
       color: "secondary",
+      image: LibraryImage,
     },
     {
       title: "RSU Intranet",
@@ -23,14 +27,15 @@ const QuickLinks = () => {
       icon: BookOpen,
       href: "https://intranet.rsu.ac.th/",
       color: "accent",
+      image: HeroCampusImage,
     },
   ];
 
   return (
     <section id="quick-links" className="py-20 bg-muted/30">
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-8">
         <div className="text-center mb-16">
-          <h2 className="font-playfair text-4xl md:text-5xl font-bold text-foreground mb-4">
+          <h2 className="font-playfair text-4xl md:text-5xl font-bold text-foreground mb-4 uppercase">
             Quick Access
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
@@ -38,7 +43,7 @@ const QuickLinks = () => {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-3 gap-12">
           {links.map((link) => {
             const Icon = link.icon;
             return (
@@ -49,19 +54,29 @@ const QuickLinks = () => {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <Card className="p-8 h-full border-2 hover:border-primary transition-all duration-300 hover:shadow-elegant cursor-pointer bg-card">
-                  <div className="flex flex-col items-center text-center">
-                    <div className="w-20 h-20 rounded-2xl bg-gradient-primary flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 shadow-card">
-                      <Icon className="w-10 h-10 text-primary-foreground" />
+                <div
+                  className="relative bg-card h-full border-2 border-transparent hover:border-primary transition-all duration-300 hover:shadow-elegant cursor-pointer overflow-hidden hover:bg-soft-purple"
+                  style={{ clipPath: "polygon(0 0, 100% 0, 100% 90%, 0 100%)" }}
+                >
+                  <img
+                    src={link.image}
+                    alt={link.title}
+                    className="w-full h-48 object-cover transition-all duration-300 group-hover:scale-110 group-hover:brightness-75"
+                  />
+                  <div className="p-8">
+                    <div className="flex items-center mb-4">
+                      <div className="w-16 h-16 rounded-full bg-gradient-primary flex items-center justify-center mr-4 group-hover:scale-110 transition-transform duration-300 shadow-card">
+                        <Icon className="w-8 h-8 text-primary-foreground" />
+                      </div>
+                      <h3 className="text-2xl font-bold text-foreground group-hover:text-primary transition-colors uppercase">
+                        {link.title}
+                      </h3>
                     </div>
-                    <h3 className="text-2xl font-bold text-foreground mb-3 group-hover:text-primary transition-colors">
-                      {link.title}
-                    </h3>
                     <p className="text-muted-foreground leading-relaxed">
                       {link.description}
                     </p>
                   </div>
-                </Card>
+                </div>
               </a>
             );
           })}

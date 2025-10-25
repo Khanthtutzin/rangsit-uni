@@ -25,50 +25,57 @@ const Clubs = () => {
       name: "RIC Culture Club",
       icon: AiOutlineGlobal, // Icon component associated with the club
       members: "150+",      // Number of members in the club
-      description: "Express yourself through music with performances and jam sessions",
+      description: "Passionate about sharing my culture and learning from others around the world.",
       category: "Culture",   // Category of the club
     },
     {
       name: "RIC Badminton Club",
       icon: GiShuttlecock,
       members: "120+",
-      description: "Capture moments and develop your photography skills",
+      description: "Focused on improving my skills and enjoying teamwork on the court.",
       category: "Sports",
     },
     {
       name: "RIC Dance Club",
       icon: Users,
       members: "200+",
-      description: "Learn programming, build projects, and participate in hackathons",
+      description: "Expressing myself through dance and always excited to learn new styles.",
       category: "Arts",
     },
     {
       name: "RIC Music Club",
       icon: Music,
       members: "180+",
-      description: "Make a difference through community service and social projects",
+      description: "A music lover who enjoys creating melodies that bring people together.",
       category: "Music",
     },
     {
       name: "RIC Football Club",
       icon: IoMdFootball,
       members: "90+",
-      description: "Explore theater arts with productions and performances",
+      description: "Playing with passion, teamwork, and the goal to grow stronger every game.",
       category: "Sports",
     },
     {
       name: "RIC Basketball Club",
       icon: MdOutlineSportsBasketball,
       members: "50+",
-      description: "Lead and represent the student body in university matters",
+      description: "Believing in teamwork, discipline, and the energy of every game.",
       category: "Sports",
     },
     {
       name: "RIC Table Tennis Club",
       icon: FaTableTennis,
       members: "50+",
-      description: "Lead and represent the student body in university matters",
+      description: "Loving the fast pace and focus that table tennis brings.",
       category: "Sports",
+    },
+    {
+      name: "RIC E-Sport Club",
+      icon: Trophy,
+      members: "50+",
+      description: "Dedicated to strategy, teamwork, and constant improvement in gaming.",
+      category: "E-Sport",
     },
   ];
 
@@ -80,7 +87,7 @@ const Clubs = () => {
       {/* Main section for the student clubs content */}
       <section id="clubs" className="py-20 bg-background">
         {/* Container for responsive layout */}
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-8">
           {/* Section for the main title and description */}
           <div className="text-center mb-16">
             {/* Main heading for the student clubs page */}
@@ -103,7 +110,7 @@ const Clubs = () => {
                 // Card component for an individual club
                 <Card
                   key={club.name} // Unique key for list rendering
-                  className="p-6 border-2 hover:border-primary transition-all duration-300 hover:shadow-elegant bg-card group cursor-pointer"
+                  className="p-6 border-2 hover:border-primary transition-all duration-300 hover:shadow-elegant bg-card group cursor-pointer hover:bg-soft-purple"
                 >
                   {/* Container for club icon and basic info */}
                   <div className="flex items-start gap-4 mb-4">
