@@ -2,7 +2,9 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Megaphone, Users, Utensils } from "lucide-react";
+import { Megaphone, Users, Utensils, LogOut } from "lucide-react";
+import { useAuth } from "@/contexts/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 const adminTasks = [
   {
@@ -26,6 +28,14 @@ const adminTasks = [
 ];
 
 const AdminPanel = () => {
+  const { logout } = useAuth();
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    logout();
+    navigate("/admin-login");
+  };
+
   return (
     <>
       <Navigation />
@@ -43,10 +53,19 @@ const AdminPanel = () => {
                 </CardHeader>
                 <CardContent>
                   <p className="text-sm text-muted-foreground">{task.description}</p>
-                  <Button className="mt-4">Go to section</Button>
+                  <div className="mt-4 flex justify-center">
+                    <Button>Go to section</Button>
+                  </div>
                 </CardContent>
               </Card>
             ))}
+          </div>
+
+          <div className="mt-12 flex justify-center ">
+            <Button variant="outline" onClick={handleLogout}>
+              <LogOut className="mr-2 h-4 w-4 " />
+              Logout
+            </Button>
           </div>
         </div>
       </main>

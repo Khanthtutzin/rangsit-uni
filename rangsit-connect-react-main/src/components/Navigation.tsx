@@ -9,17 +9,20 @@ import {
   Calendar,
   Bus,
   LogIn,
+  UserCog,
   FilePenLine,
 } from "lucide-react";
 import RIG from "@/assets/RIG.png";
 import { Button } from "@/components/ui/button";
 import { Link, useLocation } from "react-router-dom";
 import { cn } from "@/lib/utils";
+import { useAuth } from "@/contexts/AuthContext";
 
 const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const location = useLocation();
+  const { isAuthenticated } = useAuth();
 
   const navLinks = [
     { name: "Home", href: "/", icon: <Home /> },
@@ -84,10 +87,20 @@ const Navigation = () => {
                   </Link>
                 ))}
                 <div className="flex flex-col gap-2 mt-4 px-4">
-                  <Link to="/admin-login" className="w-full">
-                    <Button variant="ghost" className="w-full">Login</Button>
-                  </Link>
-                  <Button className="w-full shadow-card">Apply Now</Button>
+                  {isAuthenticated ? (
+                    location.pathname !== '/admin-panel' && (
+                      <Link to="/admin-panel" className="w-full">
+                        <Button variant="ghost" className="w-full">Admin</Button>
+                      </Link>
+                    )
+                  ) : (
+                    <Link to="/admin-login" className="w-full">
+                      <Button variant="ghost" className="w-full">Login</Button>
+                    </Link>
+                  )}
+                  {!isAuthenticated && (
+                    <Button className="w-full shadow-card">Apply Now</Button>
+                  )}
                 </div>
               </div>
             </div>
@@ -123,31 +136,51 @@ const Navigation = () => {
             ))}
           </div>
           <div className="mt-auto flex flex-col gap-2 w-full px-4">
-            <Link to="/admin-login">
-              <Button
-                variant="ghost"
-                size="sm"
-                className={cn(
-                  "w-full flex items-center gap-4",
-                  !isSidebarOpen && "justify-center"
-                )}
-              >
-                <LogIn />
-                {isSidebarOpen && <span>Login</span>}
-              </Button>
-            </Link>
-            <Link to="https://rsuip.org/application-form/" target="_blank">
-              <Button
-                size="sm"
-                className={cn(
-                  "w-full flex items-center gap-4 shadow-card hover:shadow-elegant",
-                  !isSidebarOpen && "justify-center"
-                )}
-              >
-                <FilePenLine />
-                {isSidebarOpen && <span>Apply Now</span>}
-              </Button>
-            </Link>
+            {isAuthenticated ? (
+              location.pathname !== '/admin-panel' && (
+                <Link to="/admin-panel">
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    className={cn(
+                      "w-full flex items-center gap-4",
+                      !isSidebarOpen && "justify-center"
+                    )}
+                  >
+                    <UserCog />
+                    {isSidebarOpen && <span>Admin</span>}
+                  </Button>
+                </Link>
+              )
+            ) : (
+              <Link to="/admin-login">
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  className={cn(
+                    "w-full flex items-center gap-4",
+                    !isSidebarOpen && "justify-center"
+                  )}
+                >
+                  <LogIn />
+                  {isSidebarOpen && <span>Login</span>}
+                </Button>
+              </Link>
+            )}
+            {!isAuthenticated && (
+              <Link to="https://rsuip.org/application-form/" target="_blank">
+                <Button
+                  size="sm"
+                  className={cn(
+                    "w-full flex items-center gap-4 shadow-card hover:shadow-elegant",
+                    !isSidebarOpen && "justify-center"
+                  )}
+                >
+                  <FilePenLine />
+                  {isSidebarOpen && <span>Apply Now</span>}
+                </Button>
+              </Link>
+            )}
           </div>
         </div>
       </div>

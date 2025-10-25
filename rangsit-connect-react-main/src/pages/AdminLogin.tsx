@@ -8,7 +8,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import rangsitLogo from "@/assets/rangsit-logo.png";
+import RIG from "@/assets/RIG.png";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { useAuth } from "@/contexts/AuthContext";
@@ -38,7 +38,7 @@ const AdminLogin = () => {
           <div className="w-full max-w-md bg-card p-8 rounded-lg shadow-lg border border-border">
             <div className="flex flex-col items-center mb-8">
               <img
-                src={rangsitLogo}
+                src={RIG}
                 alt="Rangsit University Logo"
                 className="w-24 h-24 mb-4"
               />
