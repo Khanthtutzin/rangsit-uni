@@ -17,7 +17,9 @@ import ShuttleBus from "./pages/ShuttleBus";
 import AdminLogin from "./pages/AdminLogin";
 import InternationalPrograms from "./pages/InternationalPrograms";
 import AdminPanel from "./pages/AdminPanel";
+import ManageAnnouncements from "./pages/admin/ManageAnnouncements";
 import { AuthProvider } from "@/contexts/AuthContext";
+import { AnnouncementsProvider } from "@/contexts/AnnouncementsContext";
 import ProtectedRoute from "@/components/ProtectedRoute";
 
 const queryClient = new QueryClient();
@@ -28,24 +30,30 @@ const App = () => (
       <Toaster />
       <Sonner />
       <AuthProvider>
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<Index />} />
-            <Route path="/canteen" element={<Canteen />} />
-            <Route path="/announcements" element={<Announcements />} />
-            <Route path="/clubs" element={<Clubs />} />
-            <Route path="/calendar" element={<AcademicCalendar />} />
-            <Route path="/shuttle-bus" element={<ShuttleBus />} />
-            <Route path="/admin-login" element={<AdminLogin />} />
-            <Route path="/international-programs" element={<InternationalPrograms />} />
-            <Route
-              path="/admin-panel"
-              element={<ProtectedRoute><AdminPanel /></ProtectedRoute>}
-            />
-            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </BrowserRouter>
+        <AnnouncementsProvider>
+          <BrowserRouter>
+            <Routes>
+              <Route path="/" element={<Index />} />
+              <Route path="/canteen" element={<Canteen />} />
+              <Route path="/announcements" element={<Announcements />} />
+              <Route path="/clubs" element={<Clubs />} />
+              <Route path="/calendar" element={<AcademicCalendar />} />
+              <Route path="/shuttle-bus" element={<ShuttleBus />} />
+              <Route path="/admin-login" element={<AdminLogin />} />
+              <Route path="/international-programs" element={<InternationalPrograms />} />
+              <Route
+                path="/admin-panel"
+                element={<ProtectedRoute><AdminPanel /></ProtectedRoute>}
+              />
+              <Route
+                path="/admin/announcements"
+                element={<ProtectedRoute><ManageAnnouncements /></ProtectedRoute>}
+              />
+              {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </BrowserRouter>
+        </AnnouncementsProvider>
       </AuthProvider>
     </TooltipProvider>
   </QueryClientProvider>

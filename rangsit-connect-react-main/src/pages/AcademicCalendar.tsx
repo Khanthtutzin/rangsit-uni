@@ -3,6 +3,7 @@ import { Calendar } from '@/components/ui/calendar';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import RIG from "@/assets/RIG.png"
 
 const holidays = [
   { date: new Date(2025, 0, 1), description: "New Year's Day" },
@@ -50,60 +51,90 @@ const AcademicCalendar = () => {
   };
 
   return (
-    <> 
-          <Navigation />
-          <main className="pt-20 lg:pt-0 lg:mr-[80px]">
-            <section id="calendar" className="pb-20 lg:pt-20 bg-muted/30">
-              <div className="container mx-auto px-4">
-                <div className="text-center mb-16">
-                  <h2 className="font-playfair text-4xl md:text-5xl font-bold text-foreground mb-4">
-                    Academic Calendar 2025
-                  </h2>
-                  <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-8">
-                    Stay on track with important dates and deadlines throughout the academic year.
-                  </p>
+    <>
+      <Navigation />
+      <main className="pt-20 lg:pt-0 lg:mr-[80px]">
+        <section id="calendar" className="pb-20 lg:pt-20 bg-muted/30">
+          <div className="container mx-auto px-4">
+            <div className="text-center mb-16">
+              <h2 className="font-playfair text-4xl md:text-5xl font-bold text-foreground mb-4">
+                Academic Calendar 2025
+              </h2>
+              <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-8">
+                Stay on track with important dates and deadlines throughout the academic year.
+              </p>
+            </div>
+            <div className="flex flex-col lg:flex-row gap-8 items-start justify-center">
+              <Card className="p-4">
+                <div className="flex items-center gap-2 mb-4">
+                  <img src={RIG} alt="RIG Logo" className="w-17 h-12 pl-3 pr-3" />
+                  <select
+                    value={month.getFullYear()}
+                    onChange={(e) =>
+                      setMonth(new Date(parseInt(e.target.value), month.getMonth()))
+                    }
+                    className="border rounded-md p-2"
+                  >
+                    {Array.from({ length: 11 }, (_, i) => new Date().getFullYear() - 5 + i).map((year) => (
+                      <option key={year} value={year}>
+                        {year}
+                      </option>
+                    ))}
+                  </select>
+                  <select
+                    value={month.getMonth()}
+                    onChange={(e) =>
+                      setMonth(new Date(month.getFullYear(), parseInt(e.target.value)))
+                    }
+                    className="border rounded-md p-2"
+                  >
+                    {Array.from({ length: 12 }, (_, i) => i).map((m) => (
+                      <option key={m} value={m}>
+                        {new Date(0, m).toLocaleString('default', { month: 'long' })}
+                      </option>
+                    ))}
+                  </select>
                 </div>
-                <div className="flex flex-col lg:flex-row gap-8 items-start justify-center">
-                  <Card className="p-4">
-                    <Calendar
-                      mode="single"
-                      selected={new Date()} // Today's date
-                      onMonthChange={setMonth}
-                      className="rounded-md border"
-                      modifiers={modifiers}
-                      modifiersStyles={modifiersStyles}
-                      numberOfMonths={1}
-                    />
-                  </Card>
-                  <Card className="w-full lg:w-1/2">
-                    <CardHeader>
-                      <CardTitle>
-                        Events for {month.toLocaleString('default', { month: 'long' })}
-                      </CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                      {holidaysForMonth.length > 0 ? (
-                        <ul className="space-y-2">
-                          {holidaysForMonth.map((holiday, index) => (
-                            <li key={index} className="flex items-center gap-4">
-                              <div className="font-bold">
-                                {holiday.date.toLocaleDateString('en-US', { day: '2-digit' })}
-                              </div>
-                              <div>{holiday.description}</div>
-                            </li>
-                          ))}
-                        </ul>
-                      ) : (
-                        <p>No events for this month.</p>
-                      )}
-                    </CardContent>
-                  </Card>
-                </div>
-              </div>
-            </section>
-          </main>
-          <Footer />
-        </>  );
+                <Calendar
+                  month={month}
+                  mode="single"
+                  selected={new Date()} // Today's date
+                  onMonthChange={setMonth}
+                  className="rounded-md border"
+                  modifiers={modifiers}
+                  modifiersStyles={modifiersStyles}
+                  numberOfMonths={1}
+                />
+              </Card>
+              <Card className="w-full lg:w-1/2">
+                <CardHeader>
+                  <CardTitle>
+                    Events for {month.toLocaleString('default', { month: 'long' })}
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  {holidaysForMonth.length > 0 ? (
+                    <ul className="space-y-2">
+                      {holidaysForMonth.map((holiday, index) => (
+                        <li key={index} className="flex items-center gap-4">
+                          <div className="font-bold">
+                            {holiday.date.toLocaleDateString('en-US', { day: '2-digit' })}
+                          </div>
+                          <div>{holiday.description}</div>
+                        </li>
+                      ))}
+                    </ul>
+                  ) : (
+                    <p>No events for this month.</p>
+                  )}
+                </CardContent>
+              </Card>
+            </div>
+          </div>
+        </section>
+      </main>
+      <Footer />
+    </>);
 };
 
 export default AcademicCalendar;
