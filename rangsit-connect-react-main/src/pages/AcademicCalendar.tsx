@@ -3,6 +3,7 @@ import { Calendar } from '@/components/ui/calendar';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import RIG  from "@/assets/RIG.png"
 
 const holidays = [
   { date: new Date(2025, 0, 1), description: "New Year's Day" },
@@ -65,7 +66,37 @@ const AcademicCalendar = () => {
                 </div>
                 <div className="flex flex-col lg:flex-row gap-8 items-start justify-center">
                   <Card className="p-4">
+                    <div className="flex items-center gap-2 mb-4">
+                      <img src={RIG} alt="RIG Logo" className="w-17 h-12 pl-3 pr-3"/>
+                      <select
+                        value={month.getFullYear()}
+                        onChange={(e) =>
+                          setMonth(new Date(parseInt(e.target.value), month.getMonth()))
+                        }
+                        className="border rounded-md p-2"
+                      >
+                        {Array.from({ length: 11 }, (_, i) => new Date().getFullYear() - 5 + i).map((year) => (
+                          <option key={year} value={year}>
+                            {year}
+                          </option>
+                        ))}
+                      </select>
+                      <select
+                        value={month.getMonth()}
+                        onChange={(e) =>
+                          setMonth(new Date(month.getFullYear(), parseInt(e.target.value)))
+                        }
+                        className="border rounded-md p-2"
+                      >
+                        {Array.from({ length: 12 }, (_, i) => i).map((m) => (
+                          <option key={m} value={m}>
+                            {new Date(0, m).toLocaleString('default', { month: 'long' })}
+                          </option>
+                        ))}
+                      </select>
+                    </div>
                     <Calendar
+                      month={month}
                       mode="single"
                       selected={new Date()} // Today's date
                       onMonthChange={setMonth}
