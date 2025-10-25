@@ -16,8 +16,9 @@ import AcademicCalendar from "./pages/AcademicCalendar";
 import ShuttleBus from "./pages/ShuttleBus";
 import AdminLogin from "./pages/AdminLogin";
 import InternationalPrograms from "./pages/InternationalPrograms";
-// This comment is added to force a re-render/re-bundle by Vite
-
+import AdminPanel from "./pages/AdminPanel";
+import { AuthProvider } from "@/contexts/AuthContext";
+import ProtectedRoute from "@/components/ProtectedRoute";
 
 const queryClient = new QueryClient();
 
@@ -26,20 +27,26 @@ const App = () => (
     <TooltipProvider>
       <Toaster />
       <Sonner />
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Index />} />
-          <Route path="/canteen" element={<Canteen />} />
-          <Route path="/announcements" element={<Announcements />} />
-          <Route path="/clubs" element={<Clubs />} />
-          <Route path="/calendar" element={<AcademicCalendar />} />
-          <Route path="/shuttle-bus" element={<ShuttleBus />} />
-          <Route path="/admin-login" element={<AdminLogin />} />
-          <Route path="/international-programs" element={<InternationalPrograms />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </BrowserRouter>
+      <AuthProvider>
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Index />} />
+            <Route path="/canteen" element={<Canteen />} />
+            <Route path="/announcements" element={<Announcements />} />
+            <Route path="/clubs" element={<Clubs />} />
+            <Route path="/calendar" element={<AcademicCalendar />} />
+            <Route path="/shuttle-bus" element={<ShuttleBus />} />
+            <Route path="/admin-login" element={<AdminLogin />} />
+            <Route path="/international-programs" element={<InternationalPrograms />} />
+            <Route
+              path="/admin-panel"
+              element={<ProtectedRoute><AdminPanel /></ProtectedRoute>}
+            />
+            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </BrowserRouter>
+      </AuthProvider>
     </TooltipProvider>
   </QueryClientProvider>
 );
