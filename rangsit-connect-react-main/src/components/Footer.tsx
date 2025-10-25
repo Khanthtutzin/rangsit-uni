@@ -52,19 +52,19 @@ const Footer = () => {
             <h4 className="font-bold text-lg mb-4">Quick Links</h4>
             <ul className="space-y-2 text-sm">
               <li>
-                <a href="#" className="text-primary-foreground/80 hover:text-primary-foreground transition-colors">
+                <a href="/about-us" className="text-primary-foreground/80 hover:text-primary-foreground transition-colors">
                   About Us
                 </a>
               </li>
               <li>
-                <a href="#" className="text-primary-foreground/80 hover:text-primary-foreground transition-colors">
+                <a href="/international-programs" className="text-primary-foreground/80 hover:text-primary-foreground transition-colors">
                   Academic Programs
                 </a>
               </li>
               <li>
-                <a href="#" className="text-primary-foreground/80 hover:text-primary-foreground transition-colors">
+                <Link to="/admissions" className="text-primary-foreground/80 hover:text-primary-foreground transition-colors">
                   Admissions
-                </a>
+                </Link>
               </li>
               <li>
                 <a href="#" className="text-primary-foreground/80 hover:text-primary-foreground transition-colors">
@@ -84,12 +84,12 @@ const Footer = () => {
             <h4 className="font-bold text-lg mb-4">Resources</h4>
             <ul className="space-y-2 text-sm">
               <li>
-                <a href="#library" className="text-primary-foreground/80 hover:text-primary-foreground transition-colors">
+                <a href="https://library.rsu.ac.th/" className="text-primary-foreground/80 hover:text-primary-foreground transition-colors">
                   Library
                 </a>
               </li>
               <li>
-                <a href="#calendar" className="text-primary-foreground/80 hover:text-primary-foreground transition-colors">
+                <a href="/calendar" className="text-primary-foreground/80 hover:text-primary-foreground transition-colors">
                   Academic Calendar
                 </a>
               </li>

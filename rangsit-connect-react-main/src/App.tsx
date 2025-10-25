@@ -19,6 +19,9 @@ import InternationalPrograms from "./pages/InternationalPrograms";
 import AdminPanel from "./pages/AdminPanel";
 import { AuthProvider } from "@/contexts/AuthContext";
 import ProtectedRoute from "@/components/ProtectedRoute";
+import AcademicPrograms from "./pages/AcademicPrograms";
+import Admissions from "./pages/Admissions";
+import Library from "./pages/Library";
 
 const queryClient = new QueryClient();
 
@@ -38,6 +41,9 @@ const App = () => (
             <Route path="/shuttle-bus" element={<ShuttleBus />} />
             <Route path="/admin-login" element={<AdminLogin />} />
             <Route path="/international-programs" element={<InternationalPrograms />} />
+            <Route path="/academic-programs" element={<AcademicPrograms />} />
+            <Route path="/admissions" element={<Admissions />} />
+            <Route path="/library" element={<Library />} />
             <Route
               path="/admin-panel"
               element={<ProtectedRoute><AdminPanel /></ProtectedRoute>}
