@@ -1,100 +1,157 @@
 import { useState } from "react";
-import { Menu, X } from "lucide-react";
-import rangsitLogo from "@/assets/rangsit-logo.png";
+import {
+  Menu,
+  X,
+  Home,
+  Utensils,
+  Megaphone,
+  Users,
+  Calendar,
+  Bus,
+  LogIn,
+  FilePenLine,
+} from "lucide-react";
+import RIG from "@/assets/RIG.png";
 import { Button } from "@/components/ui/button";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
+import { cn } from "@/lib/utils";
 
 const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const location = useLocation();
 
   const navLinks = [
-    { name: "Home", href: "/" },
-    { name: "Canteen", href: "/canteen" },
-    { name: "Announcements", href: "/announcements" },
-    { name: "Clubs", href: "/clubs" },
-    { name: "Academic Calendar", href: "/calendar" },
-    { name: "Shuttle Bus", href: "/shuttle-bus" },
+    { name: "Home", href: "/", icon: <Home /> },
+    { name: "Canteen", href: "/canteen", icon: <Utensils /> },
+    { name: "Announcements", href: "/announcements", icon: <Megaphone /> },
+    { name: "Clubs", href: "/clubs", icon: <Users /> },
+    { name: "Academic Calendar", href: "/calendar", icon: <Calendar /> },
+    { name: "Shuttle Bus", href: "/shuttle-bus", icon: <Bus /> },
   ];
 
   return (
-    <nav className="sticky top-0 z-50 bg-background/80 backdrop-blur-md border-b border-border shadow-card">
-      <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-20">
-          {/* Logo */}
-          <Link to="/" className="flex items-center gap-3 group">
-            <img src={rangsitLogo} alt="Rangsit University Logo" className="w-12 h-12" />
-            <div className="hidden md:block">
-              <div className="font-playfair text-xl font-bold text-primary">
-                Rangsit University
+    <>
+      {/* Top Bar for Logo and Mobile Menu */}
+      <nav className="sticky top-0 z-50 bg-background/80 backdrop-blur-md border-b border-border shadow-card lg:hidden">
+        <div className="container mx-auto px-4">
+          <div className="flex items-center justify-between h-20">
+            {/* Logo */}
+            <Link to="/" className="flex items-center gap-3 group">
+              <img
+                src={RIG}
+                alt="Rangsit University Logo"
+                className="w-16 h-16"
+              />
+              <div className="hidden md:block">
+                <div className="font-playfair text-xl font-bold text-primary">
+                  Rangsit Inter Guide
+                </div>
+                <div className="text-xs text-muted-foreground font-medium">
+                  Excellence in Education
+                </div>
               </div>
-              <div className="text-xs text-muted-foreground font-medium">
-                Excellence in Education
+            </Link>
+
+            {/* Mobile Menu Button */}
+            <button
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              className="lg:hidden p-2 text-foreground hover:bg-muted rounded-md transition-colors"
+            >
+              {isMenuOpen ? (
+                <X className="w-6 h-6" />
+              ) : (
+                <Menu className="w-6 h-6" />
+              )}
+            </button>
+          </div>
+
+          {/* Mobile Menu */}
+          {isMenuOpen && (
+            <div className="lg:hidden py-4 border-t border-border bg-background">
+              <div className="flex flex-col gap-2">
+                {navLinks.map((link) => (
+                  <Link
+                    key={link.name}
+                    to={link.href}
+                    className={cn(
+                      "px-4 py-3 text-sm font-medium text-foreground hover:text-primary hover:bg-muted rounded-md transition-colors",
+                      location.pathname === link.href && "bg-muted"
+                    )}
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    {link.name}
+                  </Link>
+                ))}
+                <div className="flex flex-col gap-2 mt-4 px-4">
+                  <Link to="/admin-login" className="w-full">
+                    <Button variant="ghost" className="w-full">Login</Button>
+                  </Link>
+                  <Button className="w-full shadow-card">Apply Now</Button>
+                </div>
               </div>
             </div>
-          </Link>
+          )}
+        </div>
+      </nav>
 
-          {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center gap-1">
+      {/* Desktop Sidebar Navigation */}
+      <div
+        onMouseEnter={() => setIsSidebarOpen(true)}
+        onMouseLeave={() => setIsSidebarOpen(false)}
+        className="hidden lg:flex flex-col fixed top-0 right-0 h-full bg-background/80 backdrop-blur-md border-l border-border shadow-card z-50 transition-all duration-300"
+        style={{ width: isSidebarOpen ? "250px" : "80px" }}
+      >
+        <div className="flex flex-col items-center py-4 h-full">
+          <Link to="/" className="flex items-center gap-3 group mb-8">
+            <img src={RIG} alt="Rangsit University Logo" className="w-16 h-16" />
+          </Link>
+          <div className="flex flex-col gap-4 w-full px-4">
             {navLinks.map((link) => (
               <Link
                 key={link.name}
                 to={link.href}
-                className="px-4 py-2 text-sm font-medium text-foreground hover:text-primary transition-colors rounded-md hover:bg-muted"
+                className={cn(
+                  "flex items-center gap-4 px-4 py-3 text-sm font-medium text-foreground hover:text-primary hover:bg-muted rounded-md transition-colors",
+                  location.pathname === link.href && "bg-muted",
+                  !isSidebarOpen && "justify-center"
+                )}
               >
-                {link.name}
+                <div>{link.icon}</div>
+                {isSidebarOpen && <span>{link.name}</span>}
               </Link>
             ))}
           </div>
-
-          <div className="hidden lg:flex items-center gap-4">
+          <div className="mt-auto flex flex-col gap-2 w-full px-4">
             <Link to="/admin-login">
-              <Button variant="ghost" size="sm">
-                Login
+              <Button
+                variant="ghost"
+                size="sm"
+                className={cn(
+                  "w-full flex items-center gap-4",
+                  !isSidebarOpen && "justify-center"
+                )}
+              >
+                <LogIn />
+                {isSidebarOpen && <span>Login</span>}
               </Button>
             </Link>
             <Link to="https://rsuip.org/application-form/" target="_blank">
-              <Button size="sm" className="shadow-card hover:shadow-elegant">
-                Apply Now
+              <Button
+                size="sm"
+                className={cn(
+                  "w-full flex items-center gap-4 shadow-card hover:shadow-elegant",
+                  !isSidebarOpen && "justify-center"
+                )}
+              >
+                <FilePenLine />
+                {isSidebarOpen && <span>Apply Now</span>}
               </Button>
             </Link>
           </div>
-
-          {/* Mobile Menu Button */}
-          <button
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="lg:hidden p-2 text-foreground hover:bg-muted rounded-md transition-colors"
-          >
-            {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-          </button>
         </div>
-
-        {/* Mobile Menu */}
-        {isMenuOpen && (
-          <div className="lg:hidden py-4 border-t border-border bg-background">
-            <div className="flex flex-col gap-2">
-              {navLinks.map((link) => (
-                <Link
-                  key={link.name}
-                  to={link.href}
-                  className="px-4 py-3 text-sm font-medium text-foreground hover:text-primary hover:bg-muted rounded-md transition-colors"
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  {link.name}
-                </Link>
-              ))}
-              <div className="flex flex-col gap-2 mt-4 px-4">
-                <Link to="/admin-login" className="w-full">
-                  <Button variant="ghost" className="w-full">
-                    Login
-                  </Button>
-                </Link>
-                <Button className="w-full shadow-card">Apply Now</Button>
-              </div>
-            </div>
-          </div>
-        )}
       </div>
-    </nav>
+    </>
   );
 };
 

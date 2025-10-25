@@ -8,7 +8,6 @@ import Hero from "@/components/Hero";                     // Hero section compon
 import QuickLinks from "@/components/QuickLinks";         // Quick links section component
 import AdministrationProcess from "@/components/AdministrationProcess"; // Component displaying administrative processes
 import Footer from "@/components/Footer";                 // Footer component
-import Chatbot from "@/components/Chatbot";               // Chatbot component for user interaction
 
 // Define the Index functional component, which acts as the main landing page
 const Index = () => {
@@ -28,8 +27,6 @@ const Index = () => {
 
       {/* Renders the footer section */}
       <Footer />
-      {/* Renders the chatbot component, typically positioned at the bottom/side of the page */}
-      <Chatbot />
     </div>
   );
 };

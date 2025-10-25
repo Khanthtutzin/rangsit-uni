@@ -5,7 +5,7 @@
 // Import UI components from the local components library for card display
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 // Import Navigation and Footer components
-import Navigation from "@/components/Navigation";
+import Navigation from "@/components/Navigation.tsx";
 import Footer from "@/components/Footer";
 // Import various image assets for each international program
 import IB from "@/assets/IB.png"   // Image for International Business
@@ -25,55 +25,55 @@ import BS from "@/assets/BS.png"   // Image for Biomedical Science
 // Define an array of 'programs' data, each representing an international program
 const programs = [
   {
-    name: "Bachelor of Business Administration in International Business",
+    name: { line1: "Bachelor of Business Administration", line2: "International Business" },
     image: IB, // Associated image for the program
   },
   {
-    name: "Bachelor of Science Computer Science",
+    name: { line1: "Bachelor of Science", line2: "Computer Science" },
     image: CS,
   },
   {
-    name: "Bachelor of Arts Tourism, Hostpitality and Sports",
+    name: { line1: "Bachelor of Arts", line2: "Tourism, Hostpitality and Sports" },
     image: THS,
   },
   {
-    name: "Bachelor of Arts in Communication Arts",
+    name: { line1: "Bachelor of Arts", line2: "Communication Arts" },
     image: CA,
   },
   {
-    name: "Bachelor of Engineering in Civil Engineering",
+    name: { line1: "Bachelor of Engineering", line2: "Civil Engineering" },
     image: CE,
   },
   {
-    name: "Bachelor of Science in Information and Communication Technology",
+    name: { line1: "Bachelor of Science", line2: "Information and Communication Technology" },
     image: ICT,
   },
   {
-    name: "Bachelor of Fine Arts in Digital Design",
+    name: { line1: "Bachelor of Fine Arts", line2: "Digital Design" },
     image: DD,
   },
   {
-    name: "Bachelor of Arts International Relations And Development",
+    name: { line1: "Bachelor of Arts", line2: "International Relations And Development" },
     image: IRD,
   },
   {
-    name: "Bachelor of Fine Arts Fashion Design",
+    name: { line1: "Bachelor of Fine Arts", line2: "Fashion Design" },
     image: FD,
   },
   {
-    name: "Bachelor of Fine Arts Interior Design",
+    name: { line1: "Bachelor of Fine Arts", line2: "Interior Design" },
     image: ID,
   },
   {
-    name: "Bachelor of Engineering Electrical Engineering",
+    name: { line1: "Bachelor of Engineering", line2: "Electrical Engineering" },
     image: En,
   },
   {
-    name: "Bachelor of Science Digital Innovation",
+    name: { line1: "Bachelor of Science", line2: "Digital Innovation" },
     image: DI,
   },
   {
-    name: "Bachelor of Science Biomedical Science",
+    name: { line1: "Bachelor of Science", line2: "Biomedical Science" },
     image: BS,
   },
 ];
@@ -95,16 +95,19 @@ const InternationalPrograms = () => {
           {/* Maps through the 'programs' array to render a Card for each program */}
           {programs.map((program) => (
             // Card component for an individual program
-            <Card key={program.name}> {/* Unique key for list rendering */}
+            <Card key={program.name.line2}> {/* Unique key for list rendering */}
               {/* CardHeader for the program image */}
               <CardHeader>
                 {/* Program image, with alt text for accessibility and styling for containment */}
-                <img src={program.image} alt={program.name} className="w-full h-48 object-contain" />
+                <img src={program.image} alt={program.name.line2} className="w-full h-48 object-contain" />
               </CardHeader>
               {/* CardContent for the program title */}
               <CardContent>
                 {/* Program title */}
-                <CardTitle>{program.name}</CardTitle>
+                <CardTitle>
+                  <div className="text-lg">{program.name.line1}</div>
+                  <div className="text-2xl">{program.name.line2}</div>
+                </CardTitle>
               </CardContent>
             </Card>
           ))}
