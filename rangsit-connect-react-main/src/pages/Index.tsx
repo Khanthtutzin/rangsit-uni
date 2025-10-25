@@ -17,13 +17,15 @@ const Index = () => {
     <div className="min-h-screen bg-background">
       {/* Renders the top navigation bar */}
       <Navigation />
-      {/* Renders the hero section of the landing page */}
-      <Hero />
-      {/* Renders the quick links section */}
-      <QuickLinks />
+      <main className="pt-20 lg:pt-0 lg:mr-[80px]">
+        {/* Renders the hero section of the landing page */}
+        <Hero />
+        {/* Renders the quick links section */}
+        <QuickLinks />
 
-      {/* Renders the administration process section */}
-      <AdministrationProcess />
+        {/* Renders the administration process section */}
+        <AdministrationProcess />
+      </main>
 
       {/* Renders the footer section */}
       <Footer />

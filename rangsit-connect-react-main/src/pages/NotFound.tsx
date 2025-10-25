@@ -1,11 +1,7 @@
-/**
- * NotFound component displays a 404 error page when a user navigates to a non-existent route.
- * It provides a link to return to the home page.
- */
-// Import the useLocation hook from react-router-dom to access the current URL
 import { useLocation } from "react-router-dom";
-// Import the useEffect hook from React for side effects (like logging)
 import { useEffect } from "react";
+import Navigation from "@/components/Navigation";
+import Footer from "@/components/Footer";
 
 // Define the NotFound functional component
 const NotFound = () => {
@@ -20,22 +16,22 @@ const NotFound = () => {
 
   // The component's render method
   return (
-    // Main container div, styled to take full screen height and center its content both horizontally and vertically
-    <div className="flex min-h-screen items-center justify-center bg-gray-100">
-      {/* Inner div for text content, centered */}
-      <div className="text-center">
-        {/* Main heading for the 404 error */}
-        <h1 className="mb-4 text-4xl font-bold">404</h1>
-        {/* Descriptive paragraph for the error */}
-        <p className="mb-4 text-xl text-gray-600">Oops! Page not found</p>
-        {/* Link to navigate back to the home page */}
-        <a href="/" className="text-blue-500 underline hover:text-blue-700">
-          Return to Home
-        </a>
-      </div>
-    </div>
+    <>
+      <Navigation />
+      <main className="pt-20 lg:pt-0 lg:mr-[80px]">
+        <div className="flex min-h-[80vh] items-center justify-center bg-gray-100">
+          <div className="text-center">
+            <h1 className="mb-4 text-4xl font-bold">404</h1>
+            <p className="mb-4 text-xl text-gray-600">Oops! Page not found</p>
+            <a href="/" className="text-blue-500 underline hover:text-blue-700">
+              Return to Home
+            </a>
+          </div>
+        </div>
+      </main>
+      <Footer />
+    </>
   );
 };
 
-// Exports the NotFound component for use in other parts of the application (e.g., routing for unmatched paths)
 export default NotFound;

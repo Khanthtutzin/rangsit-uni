@@ -55,84 +55,86 @@ const Announcements = () => {
     <> {/* React Fragment to return multiple elements */}
       {/* Renders the top navigation bar */}
       <Navigation />
-      {/* Main section for the announcements content */}
-      <section id="announcements" className="py-20 bg-muted/30">
-        {/* Container for responsive layout */}
-        <div className="container mx-auto px-4">
-          {/* Section for the main title and description */}
-          <div className="text-center mb-16">
-            {/* Main heading for the announcements page */}
-            <h2 className="font-playfair text-4xl md:text-5xl font-bold text-foreground mb-4">
-              Announcements
-            </h2>
-            {/* Description text */}
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Stay informed with the latest news and updates from Rangsit University
-            </p>
-          </div>
+      <main className="pt-20 lg:pt-0 lg:mr-[80px]">
+        {/* Main section for the announcements content */}
+        <section id="announcements" className="pb-20 lg:pt-20 bg-muted/30">
+          {/* Container for responsive layout */}
+          <div className="container mx-auto px-4">
+            {/* Section for the main title and description */}
+            <div className="text-center mb-16">
+              {/* Main heading for the announcements page */}
+              <h2 className="font-playfair text-4xl md:text-5xl font-bold text-foreground mb-4">
+                Announcements
+              </h2>
+              {/* Description text */}
+              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+                Stay informed with the latest news and updates from Rangsit University
+              </p>
+            </div>
 
-          {/* Grid layout for displaying announcement cards */}
-          <div className="grid md:grid-cols-2 gap-6 max-w-6xl mx-auto">
-            {/* Maps through the 'announcements' array to render a Card for each announcement */}
-            {announcements.map((announcement, index) => (
-              // Card component for an individual announcement
-              <Card
-                key={index} // Unique key for list rendering
-                className="p-6 border-2 hover:border-primary transition-all duration-300 hover:shadow-card bg-card group cursor-pointer"
-              >
-                {/* Container for category and urgent badges */}
-                <div className="flex items-start justify-between mb-4">
-                  {/* Badge for the announcement category, variant changes based on urgency */}
-                  <Badge
-                    variant={announcement.urgent ? "default" : "secondary"} // Conditional styling for urgent announcements
-                    className="shadow-sm"
-                  >
-                    {announcement.category}
-                  </Badge>
-                  {/* Renders an 'Urgent' badge only if the announcement is marked as urgent */}
-                  {announcement.urgent && (
-                    <Badge variant="destructive" className="shadow-sm">
-                      Urgent
+            {/* Grid layout for displaying announcement cards */}
+            <div className="grid md:grid-cols-2 gap-6 max-w-6xl mx-auto">
+              {/* Maps through the 'announcements' array to render a Card for each announcement */}
+              {announcements.map((announcement, index) => (
+                // Card component for an individual announcement
+                <Card
+                  key={index} // Unique key for list rendering
+                  className="p-6 border-2 hover:border-primary transition-all duration-300 hover:shadow-card bg-card group cursor-pointer"
+                >
+                  {/* Container for category and urgent badges */}
+                  <div className="flex items-start justify-between mb-4">
+                    {/* Badge for the announcement category, variant changes based on urgency */}
+                    <Badge
+                      variant={announcement.urgent ? "default" : "secondary"} // Conditional styling for urgent announcements
+                      className="shadow-sm"
+                    >
+                      {announcement.category}
                     </Badge>
-                  )}
-                </div>
+                    {/* Renders an 'Urgent' badge only if the announcement is marked as urgent */}
+                    {announcement.urgent && (
+                      <Badge variant="destructive" className="shadow-sm">
+                        Urgent
+                      </Badge>
+                    )}
+                  </div>
 
-                {/* Announcement title */}
-                <h3 className="text-xl font-bold text-foreground mb-3 group-hover:text-primary transition-colors">
-                  {announcement.title}
-                </h3>
+                  {/* Announcement title */}
+                  <h3 className="text-xl font-bold text-foreground mb-3 group-hover:text-primary transition-colors">
+                    {announcement.title}
+                  </h3>
 
-                {/* Container for the announcement date */}
-                <div className="flex items-center gap-2 text-sm text-muted-foreground mb-4">
-                  {/* Calendar icon */}
-                  <Calendar className="w-4 h-4" />
-                  {/* Announcement date */}
-                  <span>{announcement.date}</span>
-                </div>
+                  {/* Container for the announcement date */}
+                  <div className="flex items-center gap-2 text-sm text-muted-foreground mb-4">
+                    {/* Calendar icon */}
+                    <Calendar className="w-4 h-4" />
+                    {/* Announcement date */}
+                    <span>{announcement.date}</span>
+                  </div>
 
-                {/* Announcement description */}
-                <p className="text-muted-foreground leading-relaxed mb-4">
-                  {announcement.description}
-                </p>
+                  {/* Announcement description */}
+                  <p className="text-muted-foreground leading-relaxed mb-4">
+                    {announcement.description}
+                  </p>
 
-                {/* Button to read more details about the announcement */}
-                <button className="text-primary font-medium text-sm flex items-center gap-2 group-hover:gap-3 transition-all">
-                  Read More
-                  {/* Arrow icon */}
-                  <ArrowRight className="w-4 h-4" />
-                </button>
-              </Card>
-            ))}
+                  {/* Button to read more details about the announcement */}
+                  <button className="text-primary font-medium text-sm flex items-center gap-2 group-hover:gap-3 transition-all">
+                    Read More
+                    {/* Arrow icon */}
+                    <ArrowRight className="w-4 h-4" />
+                  </button>
+                </Card>
+              ))}
+            </div>
+
+            {/* Section for the 'View All Announcements' button */}
+            <div className="text-center mt-12">
+              <Button variant="outline" size="lg">
+                View All Announcements
+              </Button>
+            </div>
           </div>
-
-          {/* Section for the 'View All Announcements' button */}
-          <div className="text-center mt-12">
-            <Button variant="outline" size="lg">
-              View All Announcements
-            </Button>
-          </div>
-        </div>
-      </section>
+        </section>
+      </main>
       {/* Renders the footer */}
       <Footer />
     </>

@@ -50,59 +50,60 @@ const AcademicCalendar = () => {
   };
 
   return (
-    <>
-      <Navigation />
-      <section id="calendar" className="py-20 bg-muted/30">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="font-playfair text-4xl md:text-5xl font-bold text-foreground mb-4">
-              Academic Calendar 2025
-            </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-8">
-              Stay on track with important dates and deadlines throughout the academic year.
-            </p>
-          </div>
-          <div className="flex flex-col lg:flex-row gap-8 items-start justify-center">
-            <Card className="p-4">
-              <Calendar
-                mode="single"
-                selected={new Date()} // Today's date
-                onMonthChange={setMonth}
-                className="rounded-md border"
-                modifiers={modifiers}
-                modifiersStyles={modifiersStyles}
-                numberOfMonths={1}
-              />
-            </Card>
-            <Card className="w-full lg:w-1/2">
-              <CardHeader>
-                <CardTitle>
-                  Events for {month.toLocaleString('default', { month: 'long' })}
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                {holidaysForMonth.length > 0 ? (
-                  <ul className="space-y-2">
-                    {holidaysForMonth.map((holiday, index) => (
-                      <li key={index} className="flex items-center gap-4">
-                        <div className="font-bold">
-                          {holiday.date.toLocaleDateString('en-US', { day: '2-digit' })}
-                        </div>
-                        <div>{holiday.description}</div>
-                      </li>
-                    ))}
-                  </ul>
-                ) : (
-                  <p>No events for this month.</p>
-                )}
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      </section>
-      <Footer />
-    </>
-  );
+    <> 
+          <Navigation />
+          <main className="pt-20 lg:pt-0 lg:mr-[80px]">
+            <section id="calendar" className="pb-20 lg:pt-20 bg-muted/30">
+              <div className="container mx-auto px-4">
+                <div className="text-center mb-16">
+                  <h2 className="font-playfair text-4xl md:text-5xl font-bold text-foreground mb-4">
+                    Academic Calendar 2025
+                  </h2>
+                  <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-8">
+                    Stay on track with important dates and deadlines throughout the academic year.
+                  </p>
+                </div>
+                <div className="flex flex-col lg:flex-row gap-8 items-start justify-center">
+                  <Card className="p-4">
+                    <Calendar
+                      mode="single"
+                      selected={new Date()} // Today's date
+                      onMonthChange={setMonth}
+                      className="rounded-md border"
+                      modifiers={modifiers}
+                      modifiersStyles={modifiersStyles}
+                      numberOfMonths={1}
+                    />
+                  </Card>
+                  <Card className="w-full lg:w-1/2">
+                    <CardHeader>
+                      <CardTitle>
+                        Events for {month.toLocaleString('default', { month: 'long' })}
+                      </CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      {holidaysForMonth.length > 0 ? (
+                        <ul className="space-y-2">
+                          {holidaysForMonth.map((holiday, index) => (
+                            <li key={index} className="flex items-center gap-4">
+                              <div className="font-bold">
+                                {holiday.date.toLocaleDateString('en-US', { day: '2-digit' })}
+                              </div>
+                              <div>{holiday.description}</div>
+                            </li>
+                          ))}
+                        </ul>
+                      ) : (
+                        <p>No events for this month.</p>
+                      )}
+                    </CardContent>
+                  </Card>
+                </div>
+              </div>
+            </section>
+          </main>
+          <Footer />
+        </>  );
 };
 
 export default AcademicCalendar;

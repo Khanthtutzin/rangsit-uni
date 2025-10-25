@@ -5,7 +5,7 @@
 // Import UI components from the local components library for card display
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 // Import Navigation and Footer components
-import Navigation from "@/components/Navigation.tsx";
+import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 // Import various image assets for each international program
 import IB from "@/assets/IB.png"   // Image for International Business
@@ -86,33 +86,35 @@ const InternationalPrograms = () => {
     <div className="min-h-screen bg-background">
       {/* Renders the top navigation bar */}
       <Navigation />
-      {/* Container for the main content of the page, with responsive padding */}
-      <div className="container mx-auto px-4">
-        {/* Main heading for the international programs section */}
-        <h1 className="text-5xl font-bold mb-8 pt-24">Undergraduate International Programs</h1>
-        {/* Grid layout for displaying program cards, responsive across different screen sizes */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {/* Maps through the 'programs' array to render a Card for each program */}
-          {programs.map((program) => (
-            // Card component for an individual program
-            <Card key={program.name.line2}> {/* Unique key for list rendering */}
-              {/* CardHeader for the program image */}
-              <CardHeader>
-                {/* Program image, with alt text for accessibility and styling for containment */}
-                <img src={program.image} alt={program.name.line2} className="w-full h-48 object-contain" />
-              </CardHeader>
-              {/* CardContent for the program title */}
-              <CardContent>
-                {/* Program title */}
-                <CardTitle>
-                  <div className="text-lg">{program.name.line1}</div>
-                  <div className="text-2xl">{program.name.line2}</div>
-                </CardTitle>
-              </CardContent>
-            </Card>
-          ))}
+      <main className="pt-20 lg:pt-0 lg:mr-[80px]">
+        {/* Container for the main content of the page, with responsive padding */}
+        <div className="container mx-auto px-4">
+          {/* Main heading for the international programs section */}
+          <h1 className="text-5xl font-bold mb-8 pt-4 lg:pt-24">Undergraduate International Programs</h1>
+          {/* Grid layout for displaying program cards, responsive across different screen sizes */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {/* Maps through the 'programs' array to render a Card for each program */}
+            {programs.map((program) => (
+              // Card component for an individual program
+              <Card key={program.name.line2}> {/* Unique key for list rendering */}
+                {/* CardHeader for the program image */}
+                <CardHeader>
+                  {/* Program image, with alt text for accessibility and styling for containment */}
+                  <img src={program.image} alt={program.name.line2} className="w-full h-48 object-contain" />
+                </CardHeader>
+                {/* CardContent for the program title */}
+                <CardContent>
+                  {/* Program title */}
+                  <CardTitle>
+                    <div className="text-lg">{program.name.line1}</div>
+                    <div className="text-2xl">{program.name.line2}</div>
+                  </CardTitle>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
         </div>
-      </div>
+      </main>
       {/* Renders the footer section */}
       <Footer />
     </div>

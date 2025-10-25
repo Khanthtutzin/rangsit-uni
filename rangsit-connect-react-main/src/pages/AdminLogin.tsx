@@ -39,7 +39,7 @@ const AdminLogin = () => {
       {/* Renders the top navigation bar */}
       <Navigation />
       {/* Main container for the login page, ensuring it takes at least the full screen height */}
-      <div className="min-h-screen flex flex-col items-center justify-center bg-background p-4">
+      <div className="min-h-screen flex flex-col items-center justify-center bg-background p-4 pt-20 lg:pt-4 lg:mr-[80px]">
         {/* Card-like container for the login form, with styling for width, padding, rounded corners, shadow, and border */}
         <div className="w-full max-w-md bg-card p-8 rounded-lg shadow-lg border border-border">
           {/* Section for the logo and login heading */}
