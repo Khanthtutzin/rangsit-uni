@@ -25,85 +25,50 @@ const Clubs = () => {
       name: "RIC Culture Club",
       icon: AiOutlineGlobal, // Icon component associated with the club
       members: "150+",      // Number of members in the club
-<<<<<<< HEAD
-      description: "Explore and celebrate diversity through cultural events, workshops, and discussions.",
-=======
-      description: "Passionate about sharing my culture and learning from others around the world.",
->>>>>>> 554d83cfa3f442f9357863b718f330ac1d315eae
+      description: "Express yourself through music with performances and jam sessions",
       category: "Culture",   // Category of the club
     },
     {
       name: "RIC Badminton Club",
       icon: GiShuttlecock,
       members: "120+",
-<<<<<<< HEAD
-      description: "Join us for friendly matches, practice your skills, and compete in tournaments.",
-=======
-      description: "Focused on improving my skills and enjoying teamwork on the court.",
->>>>>>> 554d83cfa3f442f9357863b718f330ac1d315eae
+      description: "Capture moments and develop your photography skills",
       category: "Sports",
     },
     {
       name: "RIC Dance Club",
       icon: Users,
       members: "200+",
-<<<<<<< HEAD
-      description: "Express yourself through various dance styles, from hip-hop to contemporary.",
-=======
-      description: "Expressing myself through dance and always excited to learn new styles.",
->>>>>>> 554d83cfa3f442f9357863b718f330ac1d315eae
+      description: "Learn programming, build projects, and participate in hackathons",
       category: "Arts",
     },
     {
       name: "RIC Music Club",
       icon: Music,
       members: "180+",
-<<<<<<< HEAD
-      description: "A community for musicians and music lovers to play, create, and share music.",
-=======
-      description: "A music lover who enjoys creating melodies that bring people together.",
->>>>>>> 554d83cfa3f442f9357863b718f330ac1d315eae
+      description: "Make a difference through community service and social projects",
       category: "Music",
     },
     {
       name: "RIC Football Club",
       icon: IoMdFootball,
       members: "90+",
-<<<<<<< HEAD
-      description: "Hit the pitch with fellow football enthusiasts for regular games and training.",
-=======
-      description: "Playing with passion, teamwork, and the goal to grow stronger every game.",
->>>>>>> 554d83cfa3f442f9357863b718f330ac1d315eae
+      description: "Explore theater arts with productions and performances",
       category: "Sports",
     },
     {
       name: "RIC Basketball Club",
       icon: MdOutlineSportsBasketball,
       members: "50+",
-<<<<<<< HEAD
-      description: "Shoot some hoops, improve your game, and be part of a dynamic team.",
-=======
-      description: "Believing in teamwork, discipline, and the energy of every game.",
->>>>>>> 554d83cfa3f442f9357863b718f330ac1d315eae
+      description: "Lead and represent the student body in university matters",
       category: "Sports",
     },
     {
       name: "RIC Table Tennis Club",
       icon: FaTableTennis,
       members: "50+",
-<<<<<<< HEAD
-      description: "Enjoy fast-paced games of table tennis, suitable for all skill levels.",
-=======
-      description: "Loving the fast pace and focus that table tennis brings.",
->>>>>>> 554d83cfa3f442f9357863b718f330ac1d315eae
+      description: "Lead and represent the student body in university matters",
       category: "Sports",
-    },
-    {
-      name: "RIC E-Sport Club",
-      icon: Trophy,
-      members: "50+",
-      description: "Dedicated to strategy, teamwork, and constant improvement in gaming.",
-      category: "E-Sport",
     },
   ];
 
@@ -115,7 +80,7 @@ const Clubs = () => {
       {/* Main section for the student clubs content */}
       <section id="clubs" className="py-20 bg-background">
         {/* Container for responsive layout */}
-        <div className="container mx-auto px-8">
+        <div className="container mx-auto px-4">
           {/* Section for the main title and description */}
           <div className="text-center mb-16">
             {/* Main heading for the student clubs page */}
@@ -138,7 +103,7 @@ const Clubs = () => {
                 // Card component for an individual club
                 <Card
                   key={club.name} // Unique key for list rendering
-                  className="p-6 border-2 hover:border-primary transition-all duration-300 hover:shadow-elegant bg-card group cursor-pointer hover:bg-soft-purple"
+                  className="p-6 border-2 hover:border-primary transition-all duration-300 hover:shadow-elegant bg-card group cursor-pointer"
                 >
                   {/* Container for club icon and basic info */}
                   <div className="flex items-start gap-4 mb-4">
