@@ -25,49 +25,49 @@ const Clubs = () => {
       name: "RIC Culture Club",
       icon: AiOutlineGlobal, // Icon component associated with the club
       members: "150+",      // Number of members in the club
-      description: "Express yourself through music with performances and jam sessions",
+      description: "Explore and celebrate diversity through cultural events, workshops, and discussions.",
       category: "Culture",   // Category of the club
     },
     {
       name: "RIC Badminton Club",
       icon: GiShuttlecock,
       members: "120+",
-      description: "Capture moments and develop your photography skills",
+      description: "Join us for friendly matches, practice your skills, and compete in tournaments.",
       category: "Sports",
     },
     {
       name: "RIC Dance Club",
       icon: Users,
       members: "200+",
-      description: "Learn programming, build projects, and participate in hackathons",
+      description: "Express yourself through various dance styles, from hip-hop to contemporary.",
       category: "Arts",
     },
     {
       name: "RIC Music Club",
       icon: Music,
       members: "180+",
-      description: "Make a difference through community service and social projects",
+      description: "A community for musicians and music lovers to play, create, and share music.",
       category: "Music",
     },
     {
       name: "RIC Football Club",
       icon: IoMdFootball,
       members: "90+",
-      description: "Explore theater arts with productions and performances",
+      description: "Hit the pitch with fellow football enthusiasts for regular games and training.",
       category: "Sports",
     },
     {
       name: "RIC Basketball Club",
       icon: MdOutlineSportsBasketball,
       members: "50+",
-      description: "Lead and represent the student body in university matters",
+      description: "Shoot some hoops, improve your game, and be part of a dynamic team.",
       category: "Sports",
     },
     {
       name: "RIC Table Tennis Club",
       icon: FaTableTennis,
       members: "50+",
-      description: "Lead and represent the student body in university matters",
+      description: "Enjoy fast-paced games of table tennis, suitable for all skill levels.",
       category: "Sports",
     },
   ];

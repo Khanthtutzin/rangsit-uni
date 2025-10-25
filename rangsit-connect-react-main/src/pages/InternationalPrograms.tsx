@@ -26,54 +26,80 @@ import BS from "@/assets/BS.png"   // Image for Biomedical Science
 const programs = [
   {
     name: "Bachelor of Business Administration in International Business",
+    line1: "Bachelor of Business Administration",
+    line2: "International Business",
     image: IB, // Associated image for the program
   },
   {
     name: "Bachelor of Science Computer Science",
+    line1: "Bachelor of Science",
+    line2: "Computer Science",
     image: CS,
   },
   {
     name: "Bachelor of Arts Tourism, Hostpitality and Sports",
+    line1: "Bachelor of Arts",
+    line2: "Tourism, Hostpitality and Sports",
     image: THS,
   },
   {
     name: "Bachelor of Arts in Communication Arts",
+    line1: "Bachelor of Arts",
+    line2: "Communication Arts",
     image: CA,
   },
   {
     name: "Bachelor of Engineering in Civil Engineering",
+    line1: "Bachelor of Engineering",
+    line2: "Civil Engineering",
     image: CE,
   },
   {
     name: "Bachelor of Science in Information and Communication Technology",
+    line1: "Bachelor of Science",
+    line2: "Information and Communication Technology",
     image: ICT,
   },
   {
     name: "Bachelor of Fine Arts in Digital Design",
+    line1: "Bachelor of Fine Arts",
+    line2: "Digital Design",
     image: DD,
   },
   {
     name: "Bachelor of Arts International Relations And Development",
+    line1: "Bachelor of Arts",
+    line2: "International Relations And Development",
     image: IRD,
   },
   {
     name: "Bachelor of Fine Arts Fashion Design",
+    line1: "Bachelor of Fine Arts",
+    line2: "Fashion Design",
     image: FD,
   },
   {
     name: "Bachelor of Fine Arts Interior Design",
+    line1: "Bachelor of Fine Arts",
+    line2: "Interior Design",
     image: ID,
   },
   {
     name: "Bachelor of Engineering Electrical Engineering",
+    line1: "Bachelor of Engineering",
+    line2: "Electrical Engineering",
     image: En,
   },
   {
     name: "Bachelor of Science Digital Innovation",
+    line1: "Bachelor of Science",
+    line2: "Digital Innovation",
     image: DI,
   },
   {
     name: "Bachelor of Science Biomedical Science",
+    line1: "Bachelor of Science",
+    line2: "Biomedical Science",
     image: BS,
   },
 ];
@@ -104,7 +130,10 @@ const InternationalPrograms = () => {
               {/* CardContent for the program title */}
               <CardContent>
                 {/* Program title */}
-                <CardTitle>{program.name}</CardTitle>
+                <CardTitle>
+                  <div className="font-bold text-lg">{program.line1}</div>
+                  <div className="font-bold text-3xl">{program.line2}</div>
+                </CardTitle>
               </CardContent>
             </Card>
           ))}
