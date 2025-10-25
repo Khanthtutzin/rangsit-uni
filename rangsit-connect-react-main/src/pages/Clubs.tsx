@@ -25,49 +25,49 @@ const Clubs = () => {
       name: "RIC Culture Club",
       icon: AiOutlineGlobal, // Icon component associated with the club
       members: "150+",      // Number of members in the club
-      description: "Express yourself through music with performances and jam sessions",
+      description: "Passionate about sharing my culture and learning from others around the world.",
       category: "Culture",   // Category of the club
     },
     {
       name: "RIC Badminton Club",
       icon: GiShuttlecock,
       members: "120+",
-      description: "Capture moments and develop your photography skills",
+      description: "Focused on improving my skills and enjoying teamwork on the court.",
       category: "Sports",
     },
     {
       name: "RIC Dance Club",
       icon: Users,
       members: "200+",
-      description: "Learn programming, build projects, and participate in hackathons",
+      description: "Expressing myself through dance and always excited to learn new styles.",
       category: "Arts",
     },
     {
       name: "RIC Music Club",
       icon: Music,
       members: "180+",
-      description: "Make a difference through community service and social projects",
+      description: "A community for musicians and music lovers to play, create, and share music.",
       category: "Music",
     },
     {
       name: "RIC Football Club",
       icon: IoMdFootball,
       members: "90+",
-      description: "Explore theater arts with productions and performances",
+      description: "Shoot some hoops, improve your game, and be part of a dynamic team.",
       category: "Sports",
     },
     {
       name: "RIC Basketball Club",
       icon: MdOutlineSportsBasketball,
       members: "50+",
-      description: "Lead and represent the student body in university matters",
+      description: "Believing in teamwork, discipline, and the energy of every game.",
       category: "Sports",
     },
     {
       name: "RIC Table Tennis Club",
       icon: FaTableTennis,
       members: "50+",
-      description: "Lead and represent the student body in university matters",
+      description: "Enjoy fast-paced games of table tennis, suitable for all skill levels.",
       category: "Sports",
     },
   ];
