@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const Footer = () => {
   return (
     <footer className="bg-primary text-primary-foreground">
-      <div className="container mx-auto px-4 py-16">
+      <div className="container mx-auto px-8 py-16">
         <div className="grid md:grid-cols-4 gap-8 mb-12">
           {/* About */}
           <div>
@@ -17,26 +17,30 @@ const Footer = () => {
             </p>
             <div className="flex gap-3">
               <a
-                href="#"
+                href="https://www.facebook.com/RSUIP"
                 className="w-10 h-10 rounded-full bg-primary-foreground/10 hover:bg-primary-foreground/20 flex items-center justify-center transition-colors"
+                target="_blank"
               >
                 <Facebook className="w-5 h-5" />
               </a>
               <a
-                href="#"
+                href="https://x.com/rangsitu?lang=en"
                 className="w-10 h-10 rounded-full bg-primary-foreground/10 hover:bg-primary-foreground/20 flex items-center justify-center transition-colors"
+                target="_blank"
               >
                 <Twitter className="w-5 h-5" />
               </a>
               <a
-                href="#"
+                href="https://www.instagram.com/ric.rangsit/"
                 className="w-10 h-10 rounded-full bg-primary-foreground/10 hover:bg-primary-foreground/20 flex items-center justify-center transition-colors"
+                target="_blank"
               >
                 <Instagram className="w-5 h-5" />
               </a>
               <a
-                href="#"
+                href="https://www.youtube.com/@RangsitUniversity"
                 className="w-10 h-10 rounded-full bg-primary-foreground/10 hover:bg-primary-foreground/20 flex items-center justify-center transition-colors"
+                target="_blank"
               >
                 <Youtube className="w-5 h-5" />
               </a>
@@ -141,10 +145,7 @@ const Footer = () => {
 
         {/* Bottom */}
         <div className="border-t border-primary-foreground/20 pt-8">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-primary-foreground/80 text-sm">
-              © 2025 Rangsit University. All rights reserved.
-            </p>
+          <div className="flex flex-col items-center gap-4">
             <div className="flex gap-6 text-sm">
               <a href="#" className="text-primary-foreground/80 hover:text-primary-foreground transition-colors">
                 Privacy Policy
@@ -156,6 +157,9 @@ const Footer = () => {
                 Accessibility
               </a>
             </div>
+            <p className="text-primary-foreground/80 text-sm text-center">
+              © 2025 Rangsit University. All rights reserved.
+            </p>
           </div>
         </div>
       </div>

@@ -1,3 +1,7 @@
+/**
+ * The main application component.
+ * This component sets up the main routing for the application and includes global providers like QueryClientProvider and TooltipProvider.
+ */
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -11,6 +15,7 @@ import Clubs from "./pages/Clubs";
 import AcademicCalendar from "./pages/AcademicCalendar";
 import ShuttleBus from "./pages/ShuttleBus";
 import AdminLogin from "./pages/AdminLogin";
+import InternationalPrograms from "./pages/InternationalPrograms";
 // This comment is added to force a re-render/re-bundle by Vite
 
 
@@ -30,6 +35,7 @@ const App = () => (
           <Route path="/calendar" element={<AcademicCalendar />} />
           <Route path="/shuttle-bus" element={<ShuttleBus />} />
           <Route path="/admin-login" element={<AdminLogin />} />
+          <Route path="/international-programs" element={<InternationalPrograms />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

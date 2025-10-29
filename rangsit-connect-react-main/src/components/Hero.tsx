@@ -1,10 +1,14 @@
 import { ArrowRight, Users, BookOpen, Award } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import heroImage from "@/assets/rangsit-her.webp";
+import { Link } from "react-router-dom";
 
 const Hero = () => {
   return (
-    <section className="relative min-h-[90vh] flex items-center overflow-hidden">
+    <section
+      className="relative min-h-[90vh] flex items-center overflow-hidden"
+      style={{ clipPath: "polygon(0 0, 100% 0, 100% 85%, 0 100%)" }}
+    >
       {/* Background Image with Overlay */}
       <div className="absolute inset-0 z-0">
         <img
@@ -16,10 +20,9 @@ const Hero = () => {
       </div>
 
       {/* Content */}
-      <div className="container mx-auto px-4 z-10 relative">
+      <div className="container mx-auto px-8 z-10 relative">
         <div className="max-w-3xl">
-
-          <h1 className="font-playfair text-5xl md:text-7xl font-bold text-primary-foreground mb-6 leading-tight">
+          <h1 className="font-playfair text-4xl md:text-6xl font-bold text-primary-foreground mb-6 leading-tight uppercase">
             Welcome to
             <br />
             <span className="">Rangsit University</span>
@@ -31,10 +34,12 @@ const Hero = () => {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 mb-12">
-            <Button variant="hero" size="lg" className="group">
-              Explore Programs
-              <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />
-            </Button>
+            <Link to="/international-programs">
+              <Button variant="hero" size="lg" className="group">
+                Explore Programs
+                <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />
+              </Button>
+            </Link>
             <Button
               variant="secondary"
               size="lg"
@@ -53,7 +58,9 @@ const Hero = () => {
               <div className="text-3xl font-bold text-primary-foreground mb-1">
                 25,000+
               </div>
-              <div className="text-sm text-primary-foreground/70">Students</div>
+              <div className="text-sm text-primary-foreground/70 uppercase">
+                Students
+              </div>
             </div>
             <div className="text-center">
               <div className="flex items-center justify-center w-12 h-12 bg-secondary/90 rounded-lg mb-2 mx-auto">
@@ -62,7 +69,9 @@ const Hero = () => {
               <div className="text-3xl font-bold text-primary-foreground mb-1">
                 100+
               </div>
-              <div className="text-sm text-primary-foreground/70">Programs</div>
+              <div className="text-sm text-primary-foreground/70 uppercase">
+                Programs
+              </div>
             </div>
             <div className="text-center">
               <div className="flex items-center justify-center w-12 h-12 bg-secondary/90 rounded-lg mb-2 mx-auto">
@@ -71,14 +80,13 @@ const Hero = () => {
               <div className="text-3xl font-bold text-primary-foreground mb-1">
                 50+
               </div>
-              <div className="text-sm text-primary-foreground/70">Years</div>
+              <div className="text-sm text-primary-foreground/70 uppercase">
+                Years
+              </div>
             </div>
           </div>
         </div>
       </div>
-
-      {/* Decorative Element */}
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent z-10" />
     </section>
   );
 };

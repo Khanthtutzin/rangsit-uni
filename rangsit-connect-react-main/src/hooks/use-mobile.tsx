@@ -1,3 +1,7 @@
+/**
+ * A custom hook that detects if the user is on a mobile device.
+ * It uses the `matchMedia` API to check the screen width against a mobile breakpoint.
+ */
 import * as React from "react";
 
 const MOBILE_BREAKPOINT = 768;
