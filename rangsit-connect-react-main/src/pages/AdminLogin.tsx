@@ -11,22 +11,24 @@ import { Label } from "@/components/ui/label";
 import RIG from "@/assets/RIG.png";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
-import { useAuth } from "@/contexts/AuthContext";
+import { supabase } from "@/lib/supabase";
 
 const AdminLogin = () => {
-  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-  const { login } = useAuth();
   const navigate = useNavigate();
 
-  const handleLogin = (e: React.FormEvent) => {
+  const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
-    const success = login(password);
-    if (success) {
-      navigate("/admin-panel");
+    const { error } = await supabase.auth.signInWithPassword({
+      email,
+      password,
+    });
+    if (error) {
+      setError(error.message);
     } else {
-      setError("Invalid username or password");
+      navigate("/admin-panel");
     }
   };
 
@@ -50,14 +52,14 @@ const AdminLogin = () => {
 
             <form onSubmit={handleLogin} className="space-y-6">
               <div>
-                <Label htmlFor="username">Username</Label>
+                <Label htmlFor="email">Email</Label>
                 <Input
-                  id="username"
-                  type="text"
-                  placeholder="Enter your username"
-                  value={username}
+                  id="email"
+                  type="email"
+                  placeholder="Enter your email"
+                  value={email}
                   onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-                    setUsername(e.target.value)
+                    setEmail(e.target.value)
                   }
                   required
                 />

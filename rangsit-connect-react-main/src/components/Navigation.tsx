@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   Menu,
   X,
@@ -16,13 +16,28 @@ import RIG from "@/assets/RIG.png";
 import { Button } from "@/components/ui/button";
 import { Link, useLocation } from "react-router-dom";
 import { cn } from "@/lib/utils";
-import { useAuth } from "@/contexts/AuthContext";
+import { supabase } from "@/lib/supabase";
+import { Session } from "@supabase/supabase-js";
 
 const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const location = useLocation();
-  const { isAuthenticated } = useAuth();
+  const [session, setSession] = useState<Session | null>(null);
+
+  useEffect(() => {
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      setSession(session)
+    })
+
+    const { data: authListener } = supabase.auth.onAuthStateChange((_event, session) => {
+      setSession(session)
+    })
+
+    return () => {
+      authListener.subscription.unsubscribe()
+    }
+  }, [])
 
   const navLinks = [
     { name: "Home", href: "/", icon: <Home /> },
@@ -87,7 +102,7 @@ const Navigation = () => {
                   </Link>
                 ))}
                 <div className="flex flex-col gap-2 mt-4 px-4">
-                  {isAuthenticated ? (
+                  {session ? (
                     location.pathname !== '/admin-panel' && (
                       <Link to="/admin-panel" className="w-full">
                         <Button variant="ghost" className="w-full">Admin</Button>
@@ -98,7 +113,7 @@ const Navigation = () => {
                       <Button variant="ghost" className="w-full">Login</Button>
                     </Link>
                   )}
-                  {!isAuthenticated && (
+                  {!session && (
                     <Button className="w-full shadow-card">Apply Now</Button>
                   )}
                 </div>
@@ -136,7 +151,7 @@ const Navigation = () => {
             ))}
           </div>
           <div className="mt-auto flex flex-col gap-2 w-full px-4">
-            {isAuthenticated ? (
+            {session ? (
               location.pathname !== '/admin-panel' && (
                 <Link to="/admin-panel">
                   <Button
@@ -167,7 +182,7 @@ const Navigation = () => {
                 </Button>
               </Link>
             )}
-            {!isAuthenticated && (
+            {!session && (
               <Link to="https://rsuip.org/application-form/" target="_blank">
                 <Button
                   size="sm"

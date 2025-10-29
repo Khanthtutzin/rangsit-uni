@@ -3,7 +3,7 @@ import Footer from "@/components/Footer";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Megaphone, Users, Utensils, LogOut } from "lucide-react";
-import { useAuth } from "@/contexts/AuthContext";
+import { supabase } from "@/lib/supabase";
 import { useNavigate, Link } from "react-router-dom";
 
 const adminTasks = [
@@ -34,11 +34,10 @@ const adminTasks = [
 ];
 
 const AdminPanel = () => {
-  const { logout } = useAuth();
   const navigate = useNavigate();
 
-  const handleLogout = () => {
-    logout();
+  const handleLogout = async () => {
+    await supabase.auth.signOut();
     navigate("/admin-login");
   };
 
