@@ -1,51 +1,54 @@
-import { createContext, useState, useContext, ReactNode } from 'react';
+import { createContext, useState, useContext, ReactNode, useEffect } from 'react';
+import { supabase } from '@/lib/supabase';
 
 interface Announcement {
+  id: number;
   title: string;
+  subtitle: string;
   date: string;
   category: string;
   description: string;
   urgent: boolean;
+  image: string;
 }
 
 interface AnnouncementsContextType {
   announcements: Announcement[];
-  addAnnouncement: (announcement: Announcement) => void;
-  deleteAnnouncement: (index: number) => void;
+  loading: boolean;
+  deleteAnnouncement: (id: number) => void;
 }
 
 const AnnouncementsContext = createContext<AnnouncementsContextType | undefined>(undefined);
 
-const initialAnnouncements: Announcement[] = [
-  {
-    title: "Fall Semester Registration Opens",
-    date: "May 15, 2025",
-    category: "Academic",
-    description: "Registration for Fall 2025 semester is now open. Students can register for courses through the RSU Portal.",
-    urgent: true,
-  },
-  {
-    title: "Annual University Fair 2025",
-    date: "May 20, 2025",
-    category: "Event",
-    description: "Join us for the annual university fair featuring exhibitions, performances, and guest speakers from various industries.",
-    urgent: false,
-  },
-];
-
 export const AnnouncementsProvider = ({ children }: { children: ReactNode }) => {
-  const [announcements, setAnnouncements] = useState<Announcement[]>(initialAnnouncements);
+  const [announcements, setAnnouncements] = useState<Announcement[]>([]);
+  const [loading, setLoading] = useState(true);
 
-  const addAnnouncement = (announcement: Announcement) => {
-    setAnnouncements([announcement, ...announcements]);
-  };
+  useEffect(() => {
+    const fetchAnnouncements = async () => {
+      const { data, error } = await supabase.from('announcements').select('*');
+      if (error) {
+        console.error('Error fetching announcements:', error);
+      } else {
+        setAnnouncements(data || []);
+      }
+      setLoading(false);
+    };
 
-  const deleteAnnouncement = (index: number) => {
-    setAnnouncements(announcements.filter((_, i) => i !== index));
+    fetchAnnouncements();
+  }, []);
+
+  const deleteAnnouncement = async (id: number) => {
+    const { error } = await supabase.from('announcements').delete().eq('id', id);
+    if (error) {
+      console.error('Error deleting announcement:', error);
+    } else {
+      setAnnouncements(announcements.filter((announcement) => announcement.id !== id));
+    }
   };
 
   return (
-    <AnnouncementsContext.Provider value={{ announcements, addAnnouncement, deleteAnnouncement }}>
+    <AnnouncementsContext.Provider value={{ announcements, loading, deleteAnnouncement }}>
       {children}
     </AnnouncementsContext.Provider>
   );

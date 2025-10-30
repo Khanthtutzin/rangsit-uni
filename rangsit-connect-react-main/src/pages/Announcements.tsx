@@ -1,13 +1,14 @@
-import { Megaphone, Calendar, ArrowRight } from "lucide-react";
+import { Calendar, ArrowRight } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { useAnnouncements } from "@/contexts/AnnouncementsContext";
+import { Skeleton } from "@/components/ui/skeleton";
 
 const Announcements = () => {
-  const { announcements } = useAnnouncements();
+  const { announcements, loading } = useAnnouncements();
 
   return (
     <>
@@ -24,46 +25,76 @@ const Announcements = () => {
               </p>
             </div>
 
-            <div className="grid md:grid-cols-2 gap-6 max-w-6xl mx-auto">
-              {announcements.map((announcement, index) => (
-                <Card
-                  key={index}
-                  className="p-6 border-2 hover:border-primary transition-all duration-300 hover:shadow-card bg-card group cursor-pointer"
-                >
-                  <div className="flex items-start justify-between mb-4">
-                    <Badge
-                      variant={announcement.urgent ? "default" : "secondary"}
-                      className="shadow-sm"
-                    >
-                      {announcement.category}
-                    </Badge>
-                    {announcement.urgent && (
-                      <Badge variant="destructive" className="shadow-sm">
-                        Urgent
-                      </Badge>
-                    )}
-                  </div>
+            {loading ? (
+              <div className="grid md:grid-cols-1 gap-8 max-w-4xl mx-auto">
+                {[...Array(3)].map((_, index) => (
+                  <Card key={index} className="overflow-hidden border-2 bg-card group">
+                    <div className="grid md:grid-cols-3">
+                      <div className="md:col-span-1">
+                        <Skeleton className="h-full w-full" />
+                      </div>
+                      <div className="md:col-span-2 p-6">
+                        <Skeleton className="h-4 w-1/4 mb-2" />
+                        <Skeleton className="h-6 w-3/4 mb-3" />
+                        <Skeleton className="h-4 w-1/2 mb-4" />
+                        <Skeleton className="h-4 w-1/4" />
+                      </div>
+                    </div>
+                  </Card>
+                ))}
+              </div>
+            ) : (
+              <div className="grid md:grid-cols-1 gap-8 max-w-4xl mx-auto">
+                {announcements.map((announcement) => (
+                  <Card
+                    key={announcement.id}
+                    className="overflow-hidden border-2 hover:border-primary transition-all duration-300 hover:shadow-card bg-card group"
+                  >
+                    <div className="grid md:grid-cols-3">
+                      <div className="md:col-span-1">
+                        <img
+                          src={announcement.image_url}
+                          alt={announcement.title}
+                          className="object-contain h-full w-full"
+                        />
+                      </div>
+                      <div className="md:col-span-2 p-6">
+                        <div className="flex items-start justify-between mb-2">
+                          <Badge
+                            variant={announcement.urgent ? "default" : "secondary"}
+                            className="shadow-sm"
+                          >
+                            {announcement.category}
+                          </Badge>
+                          {announcement.urgent && (
+                            <Badge variant="destructive" className="shadow-sm">
+                              Urgent
+                            </Badge>
+                          )}
+                        </div>
 
-                  <h3 className="text-xl font-bold text-foreground mb-3 group-hover:text-primary transition-colors">
-                    {announcement.title}
-                  </h3>
+                        <h3 className="text-xl font-bold text-foreground mb-2 group-hover:text-primary transition-colors">
+                          {announcement.title}
+                        </h3>
+                        <p className="text-sm text-muted-foreground mb-3">
+                          {announcement.subtitle}
+                        </p>
 
-                  <div className="flex items-center gap-2 text-sm text-muted-foreground mb-4">
-                    <Calendar className="w-4 h-4" />
-                    <span>{announcement.date}</span>
-                  </div>
+                        <div className="flex items-center gap-2 text-sm text-muted-foreground mb-4">
+                          <Calendar className="w-4 h-4" />
+                          <span>{announcement.date}</span>
+                        </div>
 
-                  <p className="text-muted-foreground leading-relaxed mb-4">
-                    {announcement.description}
-                  </p>
-
-                  <button className="text-primary font-medium text-sm flex items-center gap-2 group-hover:gap-3 transition-all">
-                    Read More
-                    <ArrowRight className="w-4 h-4" />
-                  </button>
-                </Card>
-              ))}
-            </div>
+                        <button className="text-primary font-medium text-sm flex items-center gap-2 group-hover:gap-3 transition-all">
+                          Read More
+                          <ArrowRight className="w-4 h-4" />
+                        </button>
+                      </div>
+                    </div>
+                  </Card>
+                ))}
+              </div>
+            )}
 
             <div className="text-center mt-12">
               <Button variant="outline" size="lg">
