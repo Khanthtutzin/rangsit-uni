@@ -1,142 +1,109 @@
-/**
- * AcademicCalendar component displays the university's academic calendar,
- * including important dates, events, and holidays.
- * Users can view events categorized by month and download the full calendar.
- */
-// Import necessary icons from lucide-react for UI elements
-import { Calendar, Download } from "lucide-react";
-// Import UI components from the local components library
-import { Card } from "@/components/ui/card"; // Card component for displaying event information
-import { Button } from "@/components/ui/button"; // Button component for actions like downloading the calendar
-import Navigation from "@/components/Navigation"; // Navigation bar component
-import Footer from "@/components/Footer"; // Footer component
+import { useState } from 'react';
+import { Calendar } from '@/components/ui/calendar';
+import Navigation from '@/components/Navigation';
+import Footer from '@/components/Footer';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 
-// Define the AcademicCalendar functional component
+const holidays = [
+  { date: new Date(2025, 0, 1), description: "New Year's Day" },
+  { date: new Date(2025, 1, 12), description: "Makha Bucha Day" },
+  { date: new Date(2025, 3, 7), description: "Chakri Memorial Day" },
+  { date: new Date(2025, 3, 13), description: "Songkran Festival" },
+  { date: new Date(2025, 3, 14), description: "Songkran Festival" },
+  { date: new Date(2025, 3, 15), description: "Songkran Festival" },
+  { date: new Date(2025, 3, 16), description: "Songkran Festival" },
+  { date: new Date(2025, 4, 1), description: "Labour Day" },
+  { date: new Date(2025, 4, 5), description: "Coronation Day" },
+  { date: new Date(2025, 4, 12), description: "Visakha Bucha Day" },
+  { date: new Date(2025, 6, 28), description: "King Vajiralongkorn's Birthday" },
+  { date: new Date(2025, 7, 12), description: "The Queen Mother's Birthday" },
+  { date: new Date(2025, 9, 13), description: "King Bhumibol Adulyadej Memorial Day" },
+  { date: new Date(2025, 9, 23), description: "King Chulalongkorn Memorial Day" },
+  { date: new Date(2025, 11, 5), description: "King Bhumibol Adulyadej's Birthday" },
+  { date: new Date(2025, 11, 10), description: "Constitution Day" },
+  { date: new Date(2025, 11, 31), description: "New Year's Eve" },
+];
+
 const AcademicCalendar = () => {
-  // Define an array of 'events' which represents the academic calendar data
-  const events = [
-    {
-      // Each object in the array represents a month
-      month: "May",
-      events: [
-        // Each 'event' object within a month has a date, title, and type
-        { date: "May 15-19", title: "Fall Semester Registration", type: "Registration" },
-        { date: "May 20", title: "University Fair", type: "Event" },
-      ],
-    },
-    {
-      month: "June",
-      events: [
-        { date: "June 1", title: "Fall Semester Begins", type: "Academic" },
-        { date: "June 15", title: "Add/Drop Period Ends", type: "Academic" },
-      ],
-    },
-    {
-      month: "July",
-      events: [
-        { date: "July 4", title: "Independence Day Holiday", type: "Holiday" },
-        { date: "July 20", title: "Midterm Examinations Begin", type: "Exam" },
-      ],
-    },
-    {
-      month: "August",
-      events: [
-        { date: "August 12", title: "Queen\'s Birthday", type: "Holiday" },
-        { date: "August 25-30", title: "Spring Semester Registration", type: "Registration" },
-      ],
-    },
-  ];
+  const [month, setMonth] = useState(new Date());
 
-  // Helper function to determine the CSS classes for an event based on its type
-  const getEventColor = (type: string) => {
-    // Uses a switch statement to return different color schemes for different event types
-    switch (type) {
-      case "Registration":
-        // Returns classes for registration events (e.g., light blue background, primary text)
-        return "bg-primary/10 text-primary border-primary/20";
-      case "Exam":
-        // Returns classes for exam events (e.g., light red background, destructive text)
-        return "bg-destructive/10 text-destructive border-destructive/20";
-      case "Holiday":
-        // Returns classes for holiday events (e.g., light secondary background, secondary-foreground text)
-        return "bg-secondary/10 text-secondary-foreground border-secondary/20";
-      default:
-        // Default classes for any other event types
-        return "bg-muted text-muted-foreground border-border";
-    }
+  const holidaysForMonth = holidays.filter(
+    (holiday) => holiday.date.getMonth() === month.getMonth()
+  );
+
+  const holidayDates = holidays.map((holiday) => holiday.date);
+
+  const modifiers = {
+    weekend: { dayOfWeek: [0, 6] },
+    holiday: holidayDates,
   };
 
-  // The component's render method
-  return (
-    <> {/* React Fragment to return multiple elements */}
-      {/* Renders the top navigation bar */}
-      <Navigation />
-      {/* Main section for the academic calendar content */}
-      <section id="calendar" className="py-20 bg-muted/30">
-        {/* Container for responsive layout */}
-        <div className="container mx-auto px-4">
-          {/* Section for the title and description */}
-          <div className="text-center mb-16">
-            {/* Main heading for the academic calendar */}
-            <h2 className="font-playfair text-4xl md:text-5xl font-bold text-foreground mb-4">
-              Academic Calendar
-            </h2>
-            {/*  Description text */}
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-8">
-              Stay on track with important dates and deadlines throughout the academic year
-            </p>
-            {/* Button to download the full calendar */}
-            <Button variant="secondary" size="lg" className="gap-2">
-              {/* Download icon */}
-              <Download className="w-5 h-5" />
-              Download Full Calendar
-            </Button>
-          </div>
+  const modifiersStyles = {
+    weekend: {
+      color: 'red',
+    },
+    holiday: {
+      textDecoration: 'underline',
+      textDecorationColor: 'blue',
+      textDecorationThickness: '2px',
+    },
+  };
 
-          {/* Grid layout for displaying monthly event cards */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
-            {/* Maps through the 'events' array to render a Card for each month */}
-            {events.map((monthData) => (
-              // Card component for a specific month's events
-              <Card
-                key={monthData.month} // Unique key for list rendering
-                className="p-6 border-2 hover:border-primary transition-all duration-300 hover:shadow-card bg-card"
-              >
-                {/* Month title */}
-                <h3 className="text-2xl font-bold text-primary mb-6">
-                  {monthData.month}
-                </h3>
-                {/* Container for the events within the month */}
-                <div className="space-y-4">
-                  {/* Maps through the events of the current month */}
-                  {monthData.events.map((event, index) => (
-                    // Div for each individual event
-                    <div key={index} className="space-y-2">
-                      {/* Displays the date of the event */}
-                      <div className="text-sm font-semibold text-foreground">
-                        {event.date}
-                      </div>
-                      {/* Displays the event title with dynamic styling based on event type */}
-                      <div
-                        className={`text-sm px-3 py-2 rounded-lg border ${getEventColor(
-                          event.type // Calls helper function to get color classes
-                        )} font-medium`}
-                      >
-                        {event.title}
-                      </div>
-                    </div>
-                  ))}
+  return (
+    <> 
+          <Navigation />
+          <main className="pt-20 lg:pt-0 lg:mr-[80px]">
+            <section id="calendar" className="pb-20 lg:pt-20 bg-muted/30">
+              <div className="container mx-auto px-4">
+                <div className="text-center mb-16">
+                  <h2 className="font-playfair text-4xl md:text-5xl font-bold text-foreground mb-4">
+                    Academic Calendar 2025
+                  </h2>
+                  <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-8">
+                    Stay on track with important dates and deadlines throughout the academic year.
+                  </p>
                 </div>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-      {/* Renders the footer */}
-      <Footer />
-    </>
-  );
+                <div className="flex flex-col lg:flex-row gap-8 items-start justify-center">
+                  <Card className="p-4">
+                    <Calendar
+                      mode="single"
+                      selected={new Date()} // Today's date
+                      onMonthChange={setMonth}
+                      className="rounded-md border"
+                      modifiers={modifiers}
+                      modifiersStyles={modifiersStyles}
+                      numberOfMonths={1}
+                    />
+                  </Card>
+                  <Card className="w-full lg:w-1/2">
+                    <CardHeader>
+                      <CardTitle>
+                        Events for {month.toLocaleString('default', { month: 'long' })}
+                      </CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      {holidaysForMonth.length > 0 ? (
+                        <ul className="space-y-2">
+                          {holidaysForMonth.map((holiday, index) => (
+                            <li key={index} className="flex items-center gap-4">
+                              <div className="font-bold">
+                                {holiday.date.toLocaleDateString('en-US', { day: '2-digit' })}
+                              </div>
+                              <div>{holiday.description}</div>
+                            </li>
+                          ))}
+                        </ul>
+                      ) : (
+                        <p>No events for this month.</p>
+                      )}
+                    </CardContent>
+                  </Card>
+                </div>
+              </div>
+            </section>
+          </main>
+          <Footer />
+        </>  );
 };
 
-// Exports the AcademicCalendar component for use in other parts of the application
 export default AcademicCalendar;

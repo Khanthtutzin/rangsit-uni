@@ -46,6 +46,8 @@ const QuickLinks = () => {
                 key={link.title}
                 href={link.href}
                 className="group"
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 <Card className="p-8 h-full border-2 hover:border-primary transition-all duration-300 hover:shadow-elegant cursor-pointer bg-card">
                   <div className="flex flex-col items-center text-center">

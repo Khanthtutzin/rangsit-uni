@@ -25,81 +25,55 @@ import BS from "@/assets/BS.png"   // Image for Biomedical Science
 // Define an array of 'programs' data, each representing an international program
 const programs = [
   {
-    name: "Bachelor of Business Administration in International Business",
-    line1: "Bachelor of Business Administration",
-    line2: "International Business",
+    name: { line1: "Bachelor of Business Administration", line2: "International Business" },
     image: IB, // Associated image for the program
   },
   {
-    name: "Bachelor of Science Computer Science",
-    line1: "Bachelor of Science",
-    line2: "Computer Science",
+    name: { line1: "Bachelor of Science", line2: "Computer Science" },
     image: CS,
   },
   {
-    name: "Bachelor of Arts Tourism, Hostpitality and Sports",
-    line1: "Bachelor of Arts",
-    line2: "Tourism, Hostpitality and Sports",
+    name: { line1: "Bachelor of Arts", line2: "Tourism, Hostpitality and Sports" },
     image: THS,
   },
   {
-    name: "Bachelor of Arts in Communication Arts",
-    line1: "Bachelor of Arts",
-    line2: "Communication Arts",
+    name: { line1: "Bachelor of Arts", line2: "Communication Arts" },
     image: CA,
   },
   {
-    name: "Bachelor of Engineering in Civil Engineering",
-    line1: "Bachelor of Engineering",
-    line2: "Civil Engineering",
+    name: { line1: "Bachelor of Engineering", line2: "Civil Engineering" },
     image: CE,
   },
   {
-    name: "Bachelor of Science in Information and Communication Technology",
-    line1: "Bachelor of Science",
-    line2: "Information and Communication Technology",
+    name: { line1: "Bachelor of Science", line2: "Information and Communication Technology" },
     image: ICT,
   },
   {
-    name: "Bachelor of Fine Arts in Digital Design",
-    line1: "Bachelor of Fine Arts",
-    line2: "Digital Design",
+    name: { line1: "Bachelor of Fine Arts", line2: "Digital Design" },
     image: DD,
   },
   {
-    name: "Bachelor of Arts International Relations And Development",
-    line1: "Bachelor of Arts",
-    line2: "International Relations And Development",
+    name: { line1: "Bachelor of Arts", line2: "International Relations And Development" },
     image: IRD,
   },
   {
-    name: "Bachelor of Fine Arts Fashion Design",
-    line1: "Bachelor of Fine Arts",
-    line2: "Fashion Design",
+    name: { line1: "Bachelor of Fine Arts", line2: "Fashion Design" },
     image: FD,
   },
   {
-    name: "Bachelor of Fine Arts Interior Design",
-    line1: "Bachelor of Fine Arts",
-    line2: "Interior Design",
+    name: { line1: "Bachelor of Fine Arts", line2: "Interior Design" },
     image: ID,
   },
   {
-    name: "Bachelor of Engineering Electrical Engineering",
-    line1: "Bachelor of Engineering",
-    line2: "Electrical Engineering",
+    name: { line1: "Bachelor of Engineering", line2: "Electrical Engineering" },
     image: En,
   },
   {
-    name: "Bachelor of Science Digital Innovation",
-    line1: "Bachelor of Science",
-    line2: "Digital Innovation",
+    name: { line1: "Bachelor of Science", line2: "Digital Innovation" },
     image: DI,
   },
   {
-    name: "Bachelor of Science Biomedical Science",
-    line1: "Bachelor of Science",
-    line2: "Biomedical Science",
+    name: { line1: "Bachelor of Science", line2: "Biomedical Science" },
     image: BS,
   },
 ];
@@ -112,33 +86,35 @@ const InternationalPrograms = () => {
     <div className="min-h-screen bg-background">
       {/* Renders the top navigation bar */}
       <Navigation />
-      {/* Container for the main content of the page, with responsive padding */}
-      <div className="container mx-auto px-4">
-        {/* Main heading for the international programs section */}
-        <h1 className="text-5xl font-bold mb-8 pt-24">Undergraduate International Programs</h1>
-        {/* Grid layout for displaying program cards, responsive across different screen sizes */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {/* Maps through the 'programs' array to render a Card for each program */}
-          {programs.map((program) => (
-            // Card component for an individual program
-            <Card key={program.name}> {/* Unique key for list rendering */}
-              {/* CardHeader for the program image */}
-              <CardHeader>
-                {/* Program image, with alt text for accessibility and styling for containment */}
-                <img src={program.image} alt={program.name} className="w-full h-48 object-contain" />
-              </CardHeader>
-              {/* CardContent for the program title */}
-              <CardContent>
-                {/* Program title */}
-                <CardTitle>
-                  <div className="font-bold text-lg">{program.line1}</div>
-                  <div className="font-bold text-3xl">{program.line2}</div>
-                </CardTitle>
-              </CardContent>
-            </Card>
-          ))}
+      <main className="pt-20 lg:pt-0 lg:mr-[80px]">
+        {/* Container for the main content of the page, with responsive padding */}
+        <div className="container mx-auto px-4">
+          {/* Main heading for the international programs section */}
+          <h1 className="text-5xl font-bold mb-8 pt-4 lg:pt-24">Undergraduate International Programs</h1>
+          {/* Grid layout for displaying program cards, responsive across different screen sizes */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {/* Maps through the 'programs' array to render a Card for each program */}
+            {programs.map((program) => (
+              // Card component for an individual program
+              <Card key={program.name.line2}> {/* Unique key for list rendering */}
+                {/* CardHeader for the program image */}
+                <CardHeader>
+                  {/* Program image, with alt text for accessibility and styling for containment */}
+                  <img src={program.image} alt={program.name.line2} className="w-full h-48 object-contain" />
+                </CardHeader>
+                {/* CardContent for the program title */}
+                <CardContent>
+                  {/* Program title */}
+                  <CardTitle>
+                    <div className="text-lg">{program.name.line1}</div>
+                    <div className="text-2xl">{program.name.line2}</div>
+                  </CardTitle>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
         </div>
-      </div>
+      </main>
       {/* Renders the footer section */}
       <Footer />
     </div>
