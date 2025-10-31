@@ -5,6 +5,7 @@ import FinancialServicesImage from "@/assets/scholarship.png";
 import AcademicServicesImage from "@/assets/Academic sservices.png";
 import CertificationImage from "@/assets/certificate.jpg";
 import GraduationImage from "@/assets/Graduate.png";
+import { Button } from "./ui/button";
 
 const AdministrationProcess = () => {
   const processes = [
@@ -91,6 +92,9 @@ const AdministrationProcess = () => {
                   <p className="text-muted-foreground text-sm leading-relaxed mb-4">
                     {process.description}
                   </p>
+                  <Button variant="outline" size="sm" className="mt-4">
+                    Check out our services
+                  </Button>
 
                   <div className="space-y-2">
                     <div className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-2">

@@ -17,6 +17,7 @@ import ShuttleBus from "./pages/ShuttleBus";
 import AdminLogin from "./pages/AdminLogin";
 import InternationalPrograms from "./pages/InternationalPrograms";
 import AdminPanel from "./pages/AdminPanel";
+import MentalHealth from "./pages/MentalHealth";
 import { AuthProvider } from "@/contexts/AuthContext";
 import ProtectedRoute from "@/components/ProtectedRoute";
 
@@ -35,6 +36,7 @@ const App = () => (
           <Route path="/clubs" element={<Clubs />} />
           <Route path="/calendar" element={<AcademicCalendar />} />
           <Route path="/shuttle-bus" element={<ShuttleBus />} />
+          <Route path="/mental-health" element={<MentalHealth />} />
           <Route path="/admin-login" element={<AdminLogin />} />
           <Route path="/international-programs" element={<InternationalPrograms />} />
           <Route

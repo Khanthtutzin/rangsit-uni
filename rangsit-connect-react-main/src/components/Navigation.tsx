@@ -11,6 +11,7 @@ import {
   LogIn,
   UserCog,
   FilePenLine,
+  Heart,
 } from "lucide-react";
 import RIG from "@/assets/RIG.png";
 import { Button } from "@/components/ui/button";
@@ -46,6 +47,7 @@ const Navigation = () => {
     { name: "Clubs", href: "/clubs", icon: <Users /> },
     { name: "Academic Calendar", href: "/calendar", icon: <Calendar /> },
     { name: "Shuttle Bus", href: "/shuttle-bus", icon: <Bus /> },
+    { name: "Mental Health", href: "/mental-health", icon: <Heart /> },
   ];
 
   return (
